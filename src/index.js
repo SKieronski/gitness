@@ -11,8 +11,8 @@ ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="/workouts" element={<Routines />} />
-      <Route path="/workouts/:id" element={<RoutineDetails />} />
+      <Route path="/routines" element={<Routines />} />
+      <Route path="/routinedetails/:id" element={<RoutineDetails />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')
