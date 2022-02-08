@@ -7,10 +7,21 @@ body {
 /* Header Component */
 .headerBox {
   display: flex;
+  height: 768px;
+  width: 100%;
+  background-image: url('https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 .headerTextBox {
   font-style: italic;
   font-family: 'Anton', sans-serif;
+  font-size: 70px;
+}
+
+.yellowFont {
+  color: #f9ef23;
 }
 /* NavBar Component */
 .navBarBox {
