@@ -1,10 +1,33 @@
-/* Workouts Component */
-.workoutBox {
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+body {
+  background-color: black;
+}
+
+/* Header Component */
+.headerBox {
+  display: flex;
+}
+.headerTextBox {
+  font-style: italic;
+  font-family: 'Anton', sans-serif;
+}
+/* NavBar Component */
+.navBarBox {
+  display: flex;
+}
+/* Routines Component */
+.routineBox {
   display: flex;
 }
 
-/* Workout Details Component */
-.workoutDetailsBox {
+/* Routine Details Component */
+.routineDetailsBox {
+  display: flex;
+}
+
+/* About Component */
+.aboutBox {
   display: flex;
 }
 

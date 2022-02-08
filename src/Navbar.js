@@ -1,4 +1,4 @@
 function Navbar() {
-  return <div className="NavbarBox"></div>;
+  return <div className="navBarBox"></div>;
 }
 export default Navbar;

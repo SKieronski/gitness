@@ -1,4 +1,4 @@
 function WorkoutDetails() {
-  return <div className="workoutDetailsBox"></div>;
+  return <div className="routineDetailsBox"></div>;
 }
 export default WorkoutDetails;
