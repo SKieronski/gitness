@@ -1,9 +1,13 @@
+import Nav from './Nav';
 function Header() {
   return (
     <div className="headerBox">
-      <h1 className="headerTextBox">
-        BE YOUR <span className="yellowFont">BEST</span>
-      </h1>
+      <Nav />
+      <section className="contentBox">
+        <h1 className="headerTextBox">
+          BE YOUR <span className="yellowFont">BEST</span>
+        </h1>
+      </section>
     </div>
   );
 }
