@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 import { MdClose } from 'react-icons/md';
 import { FiMenu } from 'react-icons/fi';
@@ -28,15 +28,18 @@ function Nav() {
         )}
       </button>
       <ul className={`menuNav ${navbarOpen ? 'showMenu' : ''}`}>
-        <NavLink to={'./'} onClick={() => closeMenu()}>
+        <a href="#home" onClick={() => closeMenu()}>
           Home
-        </NavLink>
-        <NavLink to={'./'} onClick={() => closeMenu()}>
-          About
-        </NavLink>
-        <NavLink to={'./'} onClick={() => closeMenu()}>
+        </a>
+        <a href="#routines" onClick={() => closeMenu()}>
           Routines
-        </NavLink>
+        </a>
+        <a href="#about" onClick={() => closeMenu()}>
+          About
+        </a>
+        <a href="#contact" onClick={() => closeMenu()}>
+          Contact Us
+        </a>
       </ul>
     </nav>
   );
