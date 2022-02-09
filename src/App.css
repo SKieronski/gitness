@@ -2,11 +2,11 @@
 
 body {
   background-color: black;
+  color: azure;
 }
 
 /* Header Component */
 .headerBox {
-  display: flex;
   height: 768px;
   width: 100%;
   background-image: url('https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
@@ -18,14 +18,67 @@ body {
   font-style: italic;
   font-family: 'Anton', sans-serif;
   font-size: 70px;
+  margin-top: 200px;
 }
 
 .yellowFont {
   color: #f9ef23;
 }
-/* NavBar Component */
-.navBarBox {
+.contentBox {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* NavBar Component */
+
+.navBar {
+  position: relative;
+}
+
+.navBar button {
+  position: fixed;
+  left: 40px;
+  top: 40px;
+  z-index: 10;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: #f9ef23;
+}
+
+.menuNav {
+  overflow-y: scroll;
+  list-style: none;
+  position: fixed;
+  top: 0;
+  background-color: black;
+  left: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 0;
+  overflow: hidden;
+  max-width: 290px;
+  z-index: 9;
+}
+
+.menuNav.showMenu {
+  width: 100%;
+  border: black;
+}
+
+a {
+  margin-top: 20px;
+  margin-left: 20px;
+  display: block;
+  padding: 10px 40px;
+  text-decoration: none;
+  color: #f9ef23;
+  font-family: 'Anton', sans-serif;
+  font-size: 30px;
+}
+
+.menuNav li:first-child {
+  margin-top: 7rem;
 }
 /* Routines Component */
 .routineBox {

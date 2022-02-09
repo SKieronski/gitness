@@ -1,33 +1,38 @@
-import {
-  Navbar,
-  NavbarToggler,
-  Collapse,
-  NavItem,
-  NavbarBrand,
-  NavLink
-} from 'reactstrap';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { MdClose } from 'react-icons/md';
+import { FiMenu } from 'react-icons/fi';
+
 function Nav() {
+  const [navbarOpen, setNavbarOpen] = useState(false);
+  const handleToggle = () => {
+    setNavbarOpen(!navbarOpen);
+  };
+  const closeMenu = () => {
+    setNavbarOpen(false);
+  };
   return (
-    <div className="navBarBox">
-      <Navbar color="faded" light>
-        <NavbarBrand className="me-auto" href="/">
-          reactstrap
-        </NavbarBrand>
-        <NavbarToggler className="me-2" onClick={function noRefCheck() {}} />
-        <Collapse navbar>
-          <Nav navbar>
-            <NavItem>
-              <NavLink href="/components/">Components</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
-                GitHub
-              </NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
-    </div>
+    <nav className="navBar">
+      <button onClick={handleToggle}>
+        {navbarOpen ? (
+          <MdClose style={{ color: '#fff', width: '40px', height: '40px' }} />
+        ) : (
+          <FiMenu style={{ color: '#7b7b7b', width: '40px', height: '40px' }} />
+        )}
+      </button>
+      <ul className={`menuNav ${navbarOpen ? 'showMenu' : ''}`}>
+        <NavLink to={'./'} onClick={() => closeMenu()}>
+          home
+        </NavLink>
+        <NavLink to={'./'} onClick={() => closeMenu()}>
+          About
+        </NavLink>
+        <NavLink to={'./'} onClick={() => closeMenu()}>
+          Routines
+        </NavLink>
+      </ul>
+    </nav>
   );
 }
 export default Nav;
