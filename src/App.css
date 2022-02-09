@@ -2,7 +2,11 @@
 
 body {
   background-color: black;
-  color: azure;
+  display: flex;
+  color: white;
+  /* align-items: center;
+  justify-content: center; */
+  flex-direction: column;
 }
 
 /* Header Component */
@@ -18,7 +22,6 @@ body {
   font-style: italic;
   font-family: 'Anton', sans-serif;
   font-size: 70px;
-  margin-top: 200px;
 }
 
 .yellowFont {
@@ -30,6 +33,22 @@ body {
   align-items: center;
 }
 /* NavBar Component */
+
+.scrolling-box {
+  background-color: white;
+  display: block;
+  height: 640px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  text-align: center;
+  width: 100%;
+}
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 
 .navBar {
   position: relative;
@@ -51,7 +70,7 @@ body {
   list-style: none;
   position: fixed;
   top: 0;
-  background-color: black;
+  background-color: transparent;
   left: 0;
   bottom: 0;
   height: 100vh;
@@ -64,6 +83,7 @@ body {
 .menuNav.showMenu {
   width: 100%;
   border: black;
+  background-color: black;
 }
 
 a {
@@ -75,6 +95,7 @@ a {
   color: #f9ef23;
   font-family: 'Anton', sans-serif;
   font-size: 30px;
+  font-style: italic;
 }
 
 .menuNav li:first-child {
@@ -83,6 +104,60 @@ a {
 /* Routines Component */
 .routineBox {
   display: flex;
+  height: 640px;
+  width: 100%;
+  background-color: black;
+  justify-content: right;
+  align-items: center;
+}
+.routineCardBox {
+  display: flex;
+  height: 500px;
+  width: 85%;
+  background-color: #f9ef23;
+  margin-right: 20px;
+  /* border-bottom: 1px solid white; */
+}
+.routineItem {
+  height: 500px;
+  width: 65%;
+  background-image: url('https://images.pexels.com/photos/841132/pexels-photo-841132.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.routineSelection {
+  height: 500px;
+  width: 35%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+}
+
+#choice {
+  height: 50px;
+  width: 99%;
+  background-color: white;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  color: black;
+  font-family: 'Anton', sans-serif;
+}
+
+#choiceYellow {
+  height: 50px;
+  width: 99%;
+  background-color: #f9ef23;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  color: black;
+  font-family: 'Anton', sans-serif;
 }
 
 /* Routine Details Component */
@@ -93,9 +168,38 @@ a {
 /* About Component */
 .aboutBox {
   display: flex;
+  height: 640px;
+  width: 100%;
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  font-family: 'Anton', sans-serif;
+}
+
+.aboutCardBox {
+  height: 500px;
+  width: 350px;
+  background-color: #f9ef23;
+}
+
+.aboutBox .title {
+  font-size: 30px;
+}
+
+/* Footer Component */
+.footerBox {
+  background-color: white;
+  display: flex;
+  height: 640px;
+  width: 100%;
 }
 
 /* Reused elements */
 button {
   text-align: center;
+}
+
+.title {
+  font-style: italic;
 }
