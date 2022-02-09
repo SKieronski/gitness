@@ -51,7 +51,7 @@ body {
   list-style: none;
   position: fixed;
   top: 0;
-  background-color: black;
+  background-color: transparent;
   left: 0;
   bottom: 0;
   height: 100vh;
@@ -64,6 +64,7 @@ body {
 .menuNav.showMenu {
   width: 100%;
   border: black;
+  background-color: black;
 }
 
 a {

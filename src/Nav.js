@@ -16,14 +16,20 @@ function Nav() {
     <nav className="navBar">
       <button onClick={handleToggle}>
         {navbarOpen ? (
-          <MdClose style={{ color: '#fff', width: '40px', height: '40px' }} />
+          <MdClose
+            style={{
+              color: '#fff',
+              width: '40px',
+              height: '40px'
+            }}
+          />
         ) : (
-          <FiMenu style={{ color: '#7b7b7b', width: '40px', height: '40px' }} />
+          <FiMenu style={{ color: '#f9ef23', width: '40px', height: '40px' }} />
         )}
       </button>
       <ul className={`menuNav ${navbarOpen ? 'showMenu' : ''}`}>
         <NavLink to={'./'} onClick={() => closeMenu()}>
-          home
+          Home
         </NavLink>
         <NavLink to={'./'} onClick={() => closeMenu()}>
           About
