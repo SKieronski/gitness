@@ -31,62 +31,64 @@ function App() {
   //   console.log(routines)
   // }, [])
 
-  useEffect(() => {
-    const getRoutines = async () => {
-      try {
-        const res = await axios.get(url)
-        setRoutinesData(res)
-        console.log(res.data)
-      } catch(err) {
-        console.log(err)
-      }
+  
+  const getRoutines = async () => {
+    try {
+      const res = await axios.get(url)
+      setRoutinesData(res)
+      console.log(res.data)
+    } catch(err) {
+      console.log(err)
     }
+  }
 
+  useEffect(() => {
     getRoutines();
   }, [])
 
   const [ newRoutine, setNewRoutine ] = useState('')
-  const [ routines, setRoutines ] = useState([])
+  // const [ routines, setRoutines ] = useState([])
 
   const handleChange = (event) => {
     setNewRoutine(event.target.value)
     // console.log(newRoutine)
   }
-  // const uniqueURL = 'http://localhost:8000/routines/6203f154332a46a9e5fb6c52'
-  // const handleSubmit = (event) => {
-  //   console.log(newRoutine)
-  //   event.preventDefault()
-  //   const newItem = {
-  //     name: newRoutine,
-  //     description: "Hello big big legs",
-  //     exercises: ['BING BONG']
-  //   }
-  //   axios.put(uniqueURL, { routine: newItem })
-  //   .then(res => console.log(res.data))
-  // }
-  // console.log(routines)
 
   //AXIOS CALLS
 
   //POST NEW
   const handleSubmit = (routine) => {
-    routine.preventDefault()
-    console.log(newRoutine)
+    routine.preventDefault()    
     const newItem = {
       name: newRoutine,
       description: 'hello',
-      exercises: ['hello', 'hello']
+      exercises: [{ name: "hello", reps: 4 }]
     }
-  axios.post(url, newItem)
+    axios.post(url, newItem)
   }
+  // console.log(routinesData)
 
   // DELETE BY ID
   // const handleClick = (routine) => {
-  //   const uniqueURL = `https://localhost:8000/routines/${routine._id}`
-  //   axios.delete(uniqueURL, routine._id)
+    // const uniqueURL = `https://localhost:8000/routines/${routine._id}`
+    // axios.delete(uniqueURL, routine._id)
   // }
 
   // UPDATE BY ID
+  
+  // const handleClick = (routine) => {
+  //   const uniqueURL = `http://localhost:8000/routines/${routine._id}`
+  //   const newItem = {
+  //     name: newRoutine,
+  //     description: 'hello',
+  //     exercises: [{ name: "hello", reps: 4 }]
+  //   }
+  //   axios.put(uniqueURL, newItem)
+  // }
+  // axios.put(uniqueURL, { name: 'jojo', description: 'bing bong', exercises: [{ name: 'bing', reps: { minmax: [ 4, 8 ]}}]}
+  
+
+
 
   return (
     <div className="App">
@@ -96,10 +98,10 @@ function App() {
           <Header />
         </section>
         <section id="routines">
-        <form onSubmit={ handleSubmit }>
+          {/* <form onSubmit={ handleSubmit }>
             <input type='text' value = { newRoutine } onChange = { handleChange }/>
             <input type='submit' />
-          </form>
+          </form> */}
           <Routines />
         </section>
         <section id="about">
