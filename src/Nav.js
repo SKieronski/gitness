@@ -35,10 +35,10 @@ function Nav() {
           Routines
         </a>
         <a href="#about" onClick={() => closeMenu()}>
-          About
+          Dev Team
         </a>
-        <a href="#contact" onClick={() => closeMenu()}>
-          Contact Us
+        <a href="#footer" onClick={() => closeMenu()}>
+          About Us
         </a>
       </ul>
     </nav>

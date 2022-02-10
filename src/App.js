@@ -3,7 +3,7 @@ import './App.css';
 import Header from './Header';
 import Nav from './Nav';
 import About from './About';
-import Routines from './Routines';
+import RoutinesBanner from './RoutinesBanner';
 import Footer from './Footer';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
           <Header />
         </section>
         <section id="routines">
-          <Routines />
+          <RoutinesBanner />
         </section>
         <section id="about">
           <About />
