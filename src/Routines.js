@@ -1,4 +1,8 @@
+import React from 'react'
+
 function Routines() {
+
+
   return (
     <div className="routineBox">
       <div className="routineCardBox">
