@@ -13,7 +13,7 @@ function Routines() {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </div>
-            <Link to="./Routines.js">
+            <Link to="/routines">
               <button classname="detailsButton">More Details</button>
             </Link>
           </div>
