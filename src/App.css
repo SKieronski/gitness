@@ -116,7 +116,6 @@ a {
   width: 85%;
   background-color: #f9ef23;
   margin-right: 20px;
-  /* border-bottom: 1px solid white; */
 }
 .routineItem {
   height: 500px;
@@ -142,9 +141,9 @@ a {
   height: 50px;
   width: 99%;
   background-color: white;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-bottom: 0.5px solid black;
+  border-left: 0.5px solid black;
+  border-right: 0.5px solid black;
   color: black;
   font-family: 'Anton', sans-serif;
 }
@@ -158,6 +157,23 @@ a {
   border-right: 1px solid black;
   color: black;
   font-family: 'Anton', sans-serif;
+}
+
+.textBox {
+  font-family: 'Anton', sans-serif;
+}
+.titleRoutineBanner {
+  font-family: 'Anton', sans-serif;
+}
+.detailsButton {
+  font-family: 'Anton', sans-serif;
+}
+.bottomText {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+  gap: 30x;
+  margin-top: 100px;
 }
 
 /* Routine Details Component */
@@ -189,17 +205,61 @@ a {
 
 /* Footer Component */
 .footerBox {
-  background-color: white;
+  background-color: black;
   display: flex;
   height: 640px;
   width: 100%;
+  flex-direction: column;
+  font-family: 'Anton', sans-serif;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+.aboutTextBox {
+  height: 700;
+  width: 80%;
 }
 
+.footerLinkBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 100px;
+  font-family: 'Anton', sans-serif;
+  background-color: #f9ef23;
+  color: black;
+  height: 700;
+  width: 100%;
+}
+
+.row1 {
+  text-align: left;
+}
+.row2 {
+  text-align: left;
+  color: black;
+}
+.logo {
+  margin-top: 30px;
+}
 /* Reused elements */
 button {
   text-align: center;
+  height: 50px;
+  width: 80px;
+  background-color: white;
+  color: black;
+  font-family: 'Anton', sans-serif;
 }
 
 .title {
   font-style: italic;
+  font-family: 'Anton', sans-serif;
+}
+
+#link {
+  color: black;
+  font-size: 20px;
+  font-style: none;
 }

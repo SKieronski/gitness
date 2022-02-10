@@ -3,7 +3,7 @@ import './App.css';
 import Header from './Header';
 import Nav from './Nav';
 import About from './About';
-import Routines from './Routines';
+import RoutinesBanner from './RoutinesBanner';
 import Footer from './Footer';
 import { useState, useEffect } from 'react';
 import axios from 'axios'
@@ -103,6 +103,7 @@ function App() {
             <input type='submit' />
           </form> */}
           <Routines />
+          <RoutinesBanner />
         </section>
         <section id="about">
           <About />
