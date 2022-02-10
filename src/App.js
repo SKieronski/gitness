@@ -5,8 +5,12 @@ import Nav from './Nav';
 import About from './About';
 import RoutinesBanner from './RoutinesBanner';
 import Footer from './Footer';
-import { useState, useEffect } from 'react';
-import axios from 'axios'
+// <<<<<<< Star
+// // import Spacer from './Spacer';
+// =======
+// // import { useState, useEffect } from 'react';
+// // import axios from 'axios'
+// >>>>>>> main
 
 function App() {
   const [ routinesData, setRoutinesData ] = useState([]) 
@@ -97,6 +101,7 @@ function App() {
         <section id="home">
           <Header />
         </section>
+        <Spacer />
         <section id="routines">
           {/* <form onSubmit={ handleSubmit }>
             <input type='text' value = { newRoutine } onChange = { handleChange }/>
@@ -105,9 +110,11 @@ function App() {
           <Routines />
           <RoutinesBanner />
         </section>
+        <Spacer />
         <section id="about">
           <About />
         </section>
+        <Spacer />
         <section id="footer">
           <Footer />
         </section>

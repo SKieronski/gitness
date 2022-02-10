@@ -3,7 +3,9 @@ import AboutCard from './AboutCard';
 function About() {
   return (
     <div className="aboutBox">
-      <h1 className="title">MEET THE TEAM</h1>
+      <h1 className="title">
+        MEET THE <span id="yellowFont"> TEAM</span>
+      </h1>
       <AboutCard />
       <AboutCard />
       <AboutCard />

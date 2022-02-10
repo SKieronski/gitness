@@ -24,13 +24,26 @@ body {
   font-size: 70px;
 }
 
-.yellowFont {
+#yellowFont {
   color: #f9ef23;
 }
 .contentBox {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 100px;
+  margin-top: 70px;
+  justify-content: flex-start;
+}
+
+#logo {
+  background-image: url('https://i.ibb.co/KyTf85m/1.png');
+  width: 250px;
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 /* NavBar Component */
 
@@ -176,6 +189,27 @@ a {
   margin-top: 100px;
 }
 
+.card {
+  height: 400px;
+  width: 275px;
+  background-color: white;
+}
+.routinesCardBox {
+  height: 1200px;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  margin-left: 70px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  background-color: #f9ef23;
+}
+.workoutRoutineTitle {
+  font-family: 'Anton', sans-serif;
+  margin-left: 150px;
+  margin-top: 75px;
+}
+
 /* Routine Details Component */
 .routineDetailsBox {
   display: flex;
@@ -243,6 +277,12 @@ a {
 .logo {
   margin-top: 30px;
 }
+
+.spacer {
+  height: 100px;
+  width: 100%;
+  background-color: black;
+}
 /* Reused elements */
 button {
   text-align: center;
@@ -262,4 +302,9 @@ button {
   color: black;
   font-size: 20px;
   font-style: none;
+}
+h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: 50px;
+  font-style: italic;
 }
