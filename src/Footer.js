@@ -2,7 +2,9 @@ function Footer() {
   return (
     <div className="footerBox">
       <div className="titleFooterBox">
-        <h1 className="titleFooter">ABOUT US</h1>
+        <h1 className="titleFooter">
+          ABOUT <span id="yellowFont"> US</span>
+        </h1>
       </div>
       <div className="aboutTextBox">
         <p className="aboutText">
