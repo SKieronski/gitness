@@ -159,6 +159,23 @@ a {
   font-family: 'Anton', sans-serif;
 }
 
+.textBox {
+  font-family: 'Anton', sans-serif;
+}
+.titleRoutineBanner {
+  font-family: 'Anton', sans-serif;
+}
+.detailsButton {
+  font-family: 'Anton', sans-serif;
+}
+.bottomText {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+  gap: 30x;
+  margin-top: 100px;
+}
+
 /* Routine Details Component */
 .routineDetailsBox {
   display: flex;
@@ -229,6 +246,11 @@ a {
 /* Reused elements */
 button {
   text-align: center;
+  height: 50px;
+  width: 80px;
+  background-color: white;
+  color: black;
+  font-family: 'Anton', sans-serif;
 }
 
 .title {

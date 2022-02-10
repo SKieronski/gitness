@@ -28,16 +28,16 @@ function Nav() {
         )}
       </button>
       <ul className={`menuNav ${navbarOpen ? 'showMenu' : ''}`}>
-        <a href="#home" onClick={() => closeMenu()}>
+        <a href="http://localhost:3000/#home" onClick={() => closeMenu()}>
           Home
         </a>
-        <a href="#routines" onClick={() => closeMenu()}>
+        <a href="http://localhost:3000/#routines" onClick={() => closeMenu()}>
           Routines
         </a>
-        <a href="#about" onClick={() => closeMenu()}>
+        <a href="http://localhost:3000/#about" onClick={() => closeMenu()}>
           Dev Team
         </a>
-        <a href="#footer" onClick={() => closeMenu()}>
+        <a href="http://localhost:3000/#footer" onClick={() => closeMenu()}>
           About Us
         </a>
       </ul>
