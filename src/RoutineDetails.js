@@ -1,4 +1,9 @@
-function WorkoutDetails() {
-  return <div className="routineDetailsBox"></div>;
+import Nav from './Nav';
+function RoutineDetails() {
+  return (
+    <div className="routineDetailsBox">
+      <Nav />
+    </div>
+  );
 }
-export default WorkoutDetails;
+export default RoutineDetails;
