@@ -277,6 +277,12 @@ a {
 .logo {
   margin-top: 30px;
 }
+
+.spacer {
+  height: 100px;
+  width: 100%;
+  background-color: black;
+}
 /* Reused elements */
 button {
   text-align: center;

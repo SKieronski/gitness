@@ -14,7 +14,7 @@ function Routines() {
               nisi ut aliquip ex ea commodo consequat.
             </div>
             <Link to="/routines">
-              <button classname="detailsButton">More Details</button>
+              <button className="detailsButton">More Details</button>
             </Link>
           </div>
         </div>
