@@ -1,22 +1,19 @@
 import { Link } from 'react-router-dom';
+import Modal from './Modal'
+import './Modal.css'
 import { useState } from 'react';
-function Routines({ workouts }) {
+function RoutinesBanner({ workouts, setOpenModal }) {
   const [myWorkout, setMyWorkout] = useState(null);
+  
+
   console.log(workouts);
   const changeMyStuff = (workoutID) => {
-    //Also we don't even need to do a axios call, we can just
-    //use an array method to get the specific data we need
     workouts.forEach((workout) => {
       if (workout._id === workoutID) {
         setMyWorkout(workout);
         return;
       }
     });
-    //Take that data and pass is to specific vars
-    //Another way to do this would be to just set the below return to workout.name etc.
-    //Then use a conditional that renders those elements when true
-    //I.E. IF this data exists, render the elements
-    //Use the vars in the return() below to display that data
   };
   if (!myWorkout) {
     return (
@@ -41,15 +38,18 @@ function Routines({ workouts }) {
                   }}
                   key={workout._id}
                 >
-                  {workout.name}
+                  {workout.routine_name}
                 </button>
               );
             })}
             <Link to="/routines" id="choiceYellow">
               ALL ROUTINES
             </Link>
-            <button id="choiceYellow">
-              <h3>CREATE ONE</h3>
+            <button id="choiceYellow" onClick={() => {
+              console.log("Clicked create button");
+              setOpenModal(true)}
+            }>
+              <h3>CREATE A ROUTINE</h3>
             </button>
           </div>
         </div>
@@ -61,8 +61,8 @@ function Routines({ workouts }) {
         <div className="routineCardBox">
           <div className="routineItem">
             <div className="bottomText">
-              <h3 className="titleRoutineBanner">{myWorkout.name}</h3>
-              <div className="textBox">{myWorkout.description}</div>
+              <h3 className="titleRoutineBanner">{myWorkout.routine_name}</h3>
+              <div className="textBox">{myWorkout.routine_description}</div>
               <Link
                 to={`/routinedetails/${myWorkout._id}`}
                 className="detailsButton"
@@ -82,15 +82,18 @@ function Routines({ workouts }) {
                   }}
                   key={workout._id}
                 >
-                  {workout.name}
+                  {workout.routine_name}
                 </button>
               );
             })}
             <Link to="/routines" id="choiceYellow">
               ALL ROUTINES
             </Link>
-            <button id="choiceYellow">
-              <h3>CREATE ONE</h3>
+            <button id="choiceYellow" onClick={() => {
+              console.log("Clicked create button");
+              setOpenModal(true)
+            }}>
+              <h3>CREATE A ROUTINE</h3>
             </button>
           </div>
         </div>
@@ -98,4 +101,4 @@ function Routines({ workouts }) {
     );
   }
 }
-export default Routines;
+export default RoutinesBanner;

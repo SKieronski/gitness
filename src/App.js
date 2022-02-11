@@ -6,6 +6,8 @@ import About from './About';
 import RoutinesBanner from './RoutinesBanner';
 import Footer from './Footer';
 import Spacer from './Spacer';
+import Modal from './Modal';
+import axios from 'axios';
 
 // =======
 import { useState, useEffect } from 'react';
@@ -14,6 +16,7 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [workouts, setWorkouts] = useState([]);
+  const [ openModal, setOpenModal] = useState(false)
   useEffect(() => {
     fetch('https://gitness-ga-earth-api.herokuapp.com/')
       .then((res) => res.json())
@@ -103,6 +106,7 @@ function App() {
 
   return (
     <div>
+      {openModal && <Modal closeModal={ setOpenModal }/>}
       <div className="scrolling-box">
         <section id="home">
           <Nav />
@@ -114,7 +118,7 @@ function App() {
             <input type='text' value = { newRoutine } onChange = { handleChange }/>
             <input type='submit' />
           </form> */}
-          <RoutinesBanner workouts={workouts} />
+          <RoutinesBanner workouts={workouts} setOpenModal={setOpenModal}/>
         </section>
         <Spacer />
         <section id="team">
