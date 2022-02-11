@@ -164,6 +164,7 @@ a {
   margin: 0px;
   padding: 0px;
   font-style: normal;
+  font-size: 20px;
 }
 
 #choiceYellow {
@@ -235,7 +236,7 @@ a {
   font-family: 'Anton', sans-serif;
 }
 
-.aboutCardBox {
+#aboutCardBox {
   height: 500px;
   width: 350px;
   background-color: #f9ef23;
@@ -243,6 +244,35 @@ a {
 
 .aboutBox .title {
   font-size: 30px;
+}
+
+.topBox1 {
+  height: 50%;
+  width: 100%;
+  background-image: url('https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fi.imgur.com%2FCxPExzxh.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.topBox2 {
+  height: 50%;
+  width: 100%;
+  background-image: url('https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fi.imgur.com%2FCxPExzxh.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.topBox3 {
+  height: 50%;
+  width: 100%;
+  background-image: url('https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fi.imgur.com%2FCxPExzxh.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+#bottomBox {
+  height: 50%;
+  width: 100%;
 }
 
 /* Footer Component */

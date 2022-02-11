@@ -15,31 +15,35 @@ function Routines() {
       .catch(console.error);
   }, []);
   console.log(workouts);
-  return (
-    <div>
+  if (!workouts) {
+    return <div>Loading...</div>;
+  } else {
+    return (
       <div>
-        <Nav />
-        <h1 className="workoutRoutineTitle">
-          WORKOUT <span id="yellowFont"> ROUTINES</span>
-        </h1>
-        <div className="routinesCardBox">
-          {workouts.map((workout) => {
-            return (
-              <Link to={`/routinedetails/${workout._id}`} key={workout._id}>
-                <div className="card">
-                  <div className="cardTitle">
-                    <h2>{workout.name}</h2>
+        <div>
+          <Nav />
+          <h1 className="workoutRoutineTitle">
+            WORKOUT <span id="yellowFont"> ROUTINES</span>
+          </h1>
+          <div className="routinesCardBox">
+            {workouts.map((workout) => {
+              return (
+                <Link to={`/routinedetails/${workout._id}`} key={workout._id}>
+                  <div className="card">
+                    <div className="cardTitle">
+                      <h2>{workout.name}</h2>
+                    </div>
+                    <div className="cardDescription">
+                      <p>{workout.exercises[0].name}</p>
+                    </div>
                   </div>
-                  <div className="cardDescription">
-                    <p>{workout.description}</p>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 export default Routines;
