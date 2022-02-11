@@ -194,8 +194,8 @@ a {
   flex-direction: column;
   justify-items: flex-start;
   gap: 30x;
-  margin-top: 100px;
   padding: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .card {
@@ -222,6 +222,12 @@ a {
 /* Routine Details Component */
 .routineDetailsBox {
   display: flex;
+  justify-content: center;
+}
+.details-container {
+  height: 500px;
+  width: 80%;
+  margin-top: 100px;
 }
 
 /* About Component */
@@ -249,7 +255,7 @@ a {
 .topBox1 {
   height: 50%;
   width: 100%;
-  background-image: url('https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fi.imgur.com%2FCxPExzxh.jpg');
+  background-image: url('https://mail.google.com/mail/u/1?ui=2&ik=1e0e11b481&attid=0.1.1&permmsgid=msg-f:1724424646004921420&th=17ee6314430d544c&view=fimg&fur=ip&sz=s0-l75-ft&attbid=ANGjdJ9ZZbaOeS37fJ-ETUNxp5VcMXYzeYlXmoP95C03yx0DiMzMjMvvRdwJcKLfxhcuwzrGnqJbWuEKZOPzAJCVZ1XaipwbdN3lvG6tZ4eONkiWqDA_-gMUC6_kSgc&disp=emb');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -265,7 +271,7 @@ a {
 .topBox3 {
   height: 50%;
   width: 100%;
-  background-image: url('https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fi.imgur.com%2FCxPExzxh.jpg');
+  background-image: url('https://i.ibb.co/47JC7js/IMG-2280-3.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -291,6 +297,7 @@ a {
 .aboutTextBox {
   height: 700;
   width: 80%;
+  margin-bottom: 100px;
 }
 
 .footerLinkBox {
@@ -340,8 +347,23 @@ button {
 }
 
 .title {
+  font-size: 100px;
   font-style: italic;
   font-family: 'Anton', sans-serif;
+  display: inline-block;
+  animation: fadeIn linear 7s;
+  -webkit-animation: fadeIn linear 7s;
+  -moz-animation: fadeIn linear 7s;
+  -o-animation: fadeIn linear 7s;
+  -ms-animation: fadeIn linear 7s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 #link {
@@ -349,8 +371,14 @@ button {
   font-size: 20px;
   font-style: none;
 }
+#link:hover {
+  color: white;
+}
 h1 {
   font-family: 'Anton', sans-serif;
   font-size: 50px;
   font-style: italic;
+}
+a:hover {
+  color: white;
 }
