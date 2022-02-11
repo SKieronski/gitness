@@ -26,7 +26,7 @@ function RoutineDetails() {
         <div className="details">
           <h2>{workouts.name}</h2>
           <h3>{workouts.genus}</h3>
-          <h4>Conservation Status</h4>
+          <h4>Workout Description</h4>
           <p>{workouts.description}</p>
           <a
             href="https://www.audubon.org/field-guide/bird/acadian-flycatcher"
