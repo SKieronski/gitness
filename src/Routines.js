@@ -1,27 +1,20 @@
-import React from 'react'
-
 import Nav from './Nav';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function Routines() {
-// <<<<<<< Star
-// //   const [workouts, setWorkouts] = useState([]);
-// //   useEffect(() => {
-// //     fetch('https://gitness-ga-earth-api.herokuapp.com/')
-// //       .then((res) => res.json())
+  const [workouts, setWorkouts] = useState([]);
+  useEffect(() => {
+    fetch('https://gitness-ga-earth-api.herokuapp.com/')
+      .then((res) => res.json())
 
-// //       .then((json) => {
-// //         setWorkouts(json);
-// //       })
+      .then((json) => {
+        setWorkouts(json);
+      })
 
-// //       .catch(console.error);
-// //   }, []);
-// //   console.log(workouts);
-// =======
-
-
-// >>>>>>> main
+      .catch(console.error);
+  }, []);
+  console.log(workouts);
   return (
     <div>
       <div>

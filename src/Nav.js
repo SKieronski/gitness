@@ -34,7 +34,7 @@ function Nav() {
         <a href="http://localhost:3000/#routines" onClick={() => closeMenu()}>
           Routines
         </a>
-        <a href="http://localhost:3000/#about" onClick={() => closeMenu()}>
+        <a href="http://localhost:3000/#team" onClick={() => closeMenu()}>
           Dev Team
         </a>
         <a href="http://localhost:3000/#footer" onClick={() => closeMenu()}>
