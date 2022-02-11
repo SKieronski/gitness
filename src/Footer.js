@@ -18,7 +18,7 @@ function Footer() {
         </p>
       </div>
       <div className="footerLinkBox">
-        <div className="logo">logo</div>
+        <div className="logo"></div>
         <div className="row1">
           <a href="#home" id="link">
             Home

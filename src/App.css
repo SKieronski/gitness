@@ -33,7 +33,7 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 100px;
-  margin-top: 70px;
+  margin-top: 50px;
   justify-content: flex-start;
 }
 
@@ -48,12 +48,13 @@ body {
 /* NavBar Component */
 
 .scrolling-box {
-  background-color: white;
+  background-color: black;
   display: block;
-  height: 640px;
+  height: 700px;
   overflow-y: scroll;
   scroll-behavior: smooth;
   text-align: center;
+  overscroll-behavior: contain;
   width: 100%;
 }
 section {
@@ -126,7 +127,7 @@ a {
 .routineCardBox {
   display: flex;
   height: 500px;
-  width: 85%;
+  width: 70%;
   background-color: #f9ef23;
   margin-right: 20px;
 }
@@ -152,24 +153,29 @@ a {
 
 #choice {
   height: 50px;
-  width: 99%;
+  width: 100%;
   background-color: white;
   border-bottom: 0.5px solid black;
   border-left: 0.5px solid black;
   border-right: 0.5px solid black;
   color: black;
   font-family: 'Anton', sans-serif;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
 }
 
 #choiceYellow {
   height: 50px;
-  width: 99%;
+  width: 100%;
   background-color: #f9ef23;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;
   color: black;
   font-family: 'Anton', sans-serif;
+  margin: 0px;
+  padding: 0px;
 }
 
 .textBox {
@@ -191,7 +197,7 @@ a {
 
 .card {
   height: 400px;
-  width: 275px;
+  width: 265px;
   background-color: white;
 }
 .routinesCardBox {
@@ -274,14 +280,22 @@ a {
   text-align: left;
   color: black;
 }
-.logo {
+/* .logo {
   margin-top: 30px;
-}
+} */
 
 .spacer {
   height: 100px;
   width: 100%;
   background-color: black;
+}
+.logo {
+  background-image: url('https://i.ibb.co/WWMXtpr/2.png');
+  width: 250px;
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 /* Reused elements */
 button {

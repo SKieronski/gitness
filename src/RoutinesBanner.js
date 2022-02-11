@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
-function Routines() {
+function Routines({ workouts }) {
+  console.log(workouts);
   return (
     <div className="routineBox">
       <div className="routineCardBox">
@@ -13,24 +14,19 @@ function Routines() {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </div>
-            <Link to="/routines">
-              <button className="detailsButton">More Details</button>
+            <Link to={'/routines'} className="detailsButton">
+              More Details
             </Link>
           </div>
         </div>
         <div className="routineSelection">
-          <button id="choice">
-            <h3>WORKOUT 1</h3>
-          </button>
-          <button id="choice">
-            <h3>WORKOUT 2</h3>
-          </button>
-          <button id="choice">
-            <h3>WORKOUT 3</h3>
-          </button>
-          <button id="choice">
-            <h3>WORKOUT 4</h3>
-          </button>
+          {workouts.map((workout) => {
+            return (
+              <Link to={`/routinedetails/${workout._id}`} id="choice">
+                {workout.name}
+              </Link>
+            );
+          })}
           <button id="choiceYellow">
             <h3>CREATE ONE</h3>
           </button>

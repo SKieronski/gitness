@@ -6,7 +6,7 @@ function RoutineDetails() {
   let { id } = useParams();
   const [workouts, setWorkouts] = useState([]);
   const url = `https://gitness-ga-earth-api.herokuapp.com/routines/${id}`;
-  // const workoutsUrl = url + id;
+
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -27,7 +27,7 @@ function RoutineDetails() {
           <h2>{workouts.name}</h2>
           <h3>{workouts.genus}</h3>
           <h4>Conservation Status</h4>
-          <p>{workouts.conservationStatus}</p>
+          <p>{workouts.description}</p>
           <a
             href="https://www.audubon.org/field-guide/bird/acadian-flycatcher"
             target="_blank"
