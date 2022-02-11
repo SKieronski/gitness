@@ -121,8 +121,7 @@ a {
   height: 640px;
   width: 100%;
   background-color: black;
-  justify-content: right;
-  align-items: center;
+  justify-content: center;
 }
 .routineCardBox {
   display: flex;
@@ -138,6 +137,7 @@ a {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  display: flex;
 }
 
 .routineSelection {
@@ -163,6 +163,7 @@ a {
   text-align: center;
   margin: 0px;
   padding: 0px;
+  font-style: normal;
 }
 
 #choiceYellow {
@@ -193,6 +194,7 @@ a {
   justify-items: flex-start;
   gap: 30x;
   margin-top: 100px;
+  padding: 50px;
 }
 
 .card {
