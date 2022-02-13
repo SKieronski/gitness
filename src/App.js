@@ -12,7 +12,7 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [workouts, setWorkouts] = useState([]);
-  const [ openModal, setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
     fetch('https://gitness-ga-earth-api.herokuapp.com/')
       .then((res) => res.json())
@@ -25,59 +25,56 @@ function App() {
   }, []);
   console.log(workouts);
 
-  
-   
-  
   const initFormState = {
-    routine_name: "",
-    routine_description: "",
+    routine_name: '',
+    routine_description: '',
     exercises: [
-        {
-            exercise_name: "",
-            exercise_description: "",
-            reps: {
-                minmax: [0,0]
-            },
-            sets: 0,
-            muscle_groups: "",
-            img_example: ''
-        }
+      {
+        exercise_name: '',
+        exercise_description: '',
+        reps: {
+          minmax: [0, 0]
+        },
+        sets: 0,
+        muscle_groups: '',
+        img_example: ''
+      }
     ]
-  }
+  };
 
   const [formState, setFormState] = useState(initFormState);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log("Clicked submit");
-        console.log(formState);    
-        
-      
-        let tempForm = formState
-        
-        let myMuscles = tempForm.exercises[0].muscle_groups;
-        if(myMuscles.includes(",")){
-          let arrayOfMuscles = myMuscles.split(", ");
-          tempForm.exercises[0].muscle_groups = arrayOfMuscles;
-        }
-       
-        // console.log(myMuscles)
-        // console.log(arrayOfMuscles);
-        setFormState({...tempForm})
-        console.log(formState);
-      
-        //   const newItem = {
-        //   name: 'hello',
-        //   description: 'hello',
-        //   exercises: [{ name: 'hello' }]
-        // };
-        console.log("Attempting to post");
-        axios.post('https://gitness-ga-earth-api.herokuapp.com/routines', formState)
-        .then(res => console.log(res))
-        .catch(error => {
-          console.error(error);
-        });
-      }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Clicked submit');
+    console.log(formState);
+
+    let tempForm = formState;
+
+    let myMuscles = tempForm.exercises[0].muscle_groups;
+    if (myMuscles.includes(',')) {
+      let arrayOfMuscles = myMuscles.split(', ');
+      tempForm.exercises[0].muscle_groups = arrayOfMuscles;
+    }
+
+    // console.log(myMuscles)
+    // console.log(arrayOfMuscles);
+    setFormState({ ...tempForm });
+    console.log(formState);
+
+    //   const newItem = {
+    //   name: 'hello',
+    //   description: 'hello',
+    //   exercises: [{ name: 'hello' }]
+    // };
+    console.log('Attempting to post');
+    axios
+      .post('https://gitness-ga-earth-api.herokuapp.com/routines', formState)
+      .then((res) => console.log(res))
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   //   const [routinesData, setRoutinesData] = useState([]);
   // this is the collection of all routines from the db
 
@@ -157,13 +154,14 @@ function App() {
   return (
     <div>
       {/* <Modal /> */}
-      {openModal && 
-        <Modal 
-          closeModal={ setOpenModal } 
-          formState = { formState }
-          setFormState = { setFormState }
-          handleSubmit = { handleSubmit }
-        />}
+      {openModal && (
+        <Modal
+          closeModal={setOpenModal}
+          formState={formState}
+          setFormState={setFormState}
+          handleSubmit={handleSubmit}
+        />
+      )}
       <div className="scrolling-box">
         <section id="home">
           <Nav />
@@ -177,7 +175,7 @@ function App() {
           </form> */}
           <RoutinesBanner workouts={workouts} setOpenModal={setOpenModal} />
         </section>
-        <Spacer />
+        {/* <Spacer /> */}
         <section id="team">
           <About />
         </section>

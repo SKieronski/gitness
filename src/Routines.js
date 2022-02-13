@@ -22,7 +22,7 @@ function Routines() {
       <div>
         <div>
           <Nav />
-          <h1 className="workoutRoutineTitle">
+          <h1 id="workoutRoutineTitle">
             WORKOUT <span id="yellowFont"> ROUTINES</span>
           </h1>
           <div className="routinesCardBox">
@@ -33,6 +33,9 @@ function Routines() {
                     <h2>{workout.routine_name}</h2>
                   </div>
                   <div className="cardDescription">
+                    {workout.routine_description}
+                  </div>
+                  <div className="detailsBackground">
                     <Link
                       to={`/routinedetails/${workout._id}`}
                       key={workout._id}

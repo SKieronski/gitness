@@ -21,23 +21,30 @@ function RoutineDetails() {
     return <p>Loading workout stuff...</p>;
   } else {
     return (
-      <div className="routineDetailsBox">
-        <Nav />
-        <div className="details-container">
-          <div className="details">
-            <h2>{workout.routine_name}</h2>
-            <h4>Workout Description</h4>
-            <ul className="exercisesUL">
-              {workout.exercises.map((exercise) => {
-                return (
-                  <li className="exercisesLI">
-                    {exercise.exercise_name} / Reps: min{' '}
-                    {exercise.reps.minmax[0]}, max {exercise.reps.minmax[1]} /
-                    Sets: {exercise.sets}
-                  </li>
-                );
-              })}
-            </ul>
+      <div>
+        <h1>
+          ROUTINE <span id="yellowFont">DETAILS</span>
+        </h1>
+        <div className="routineDetailsBox">
+          <Nav />
+
+          <div className="gifBox"></div>
+          <div className="details-container">
+            <div className="details">
+              <h2 className="routineName">{workout.routine_name}</h2>
+              <h4>Workout Description</h4>
+              <ol className="exercisesOL">
+                {workout.exercises.map((exercise) => {
+                  return (
+                    <li className="exercisesLI">
+                      {exercise.exercise_name} / Reps: min{' '}
+                      {exercise.reps.minmax[0]}, max {exercise.reps.minmax[1]} /
+                      Sets: {exercise.sets}
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
           </div>
         </div>
       </div>
