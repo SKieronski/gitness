@@ -3,30 +3,15 @@ import './Modal.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const Modal = ({closeModal, formState, setFormState, handleSubmit}) => {
+const Modal = ({setOpenModal}) => {
     
     
     const url = 'https://gitness-ga-earth-api.herokuapp.com/routines'
-    //May need to have two states, one for routines and one for exercises. Then combine the states before making 
-    //a post request.
-    //2. We change the database to have different field names and then use those field names in our inputs.
+   
    
     const handleChange = (event) => {
         event.preventDefault()
-        //if the ID is minmax, make the value an array and pass that to setFormState
-        // if(event.target.id === "reps.min"){
-        //     let temp = formState.reps.minmax;
-        //     temp[0] = event.target.value;
-        //     setFormState({...formState, "reps.minmax": temp})
-        // } else if(event.target.id === "reps.max") {
-        //     let temp = formState.reps.minmax;
-        //     temp[1] = event.target.value;
-        //     setFormState({...formState, "reps.minmax": temp})
-        // } else {
-        //     setFormState({ ...formState, [event.target.id]: event.target.value});
-        // }
-        // setFormState({ ...formState, [event.target.id]: event.target.value});
-
+       
         if(event.target.id === "routine_name"){
             setFormState({ ...formState, [event.target.id]: event.target.value});
         } else if(event.target.id === "routine_description") {
@@ -52,56 +37,54 @@ const Modal = ({closeModal, formState, setFormState, handleSubmit}) => {
         // console.log(formState);
     }
 
-    // const initFormState = {
-    //   routine_name: "",
-    //   routine_description: "",
-    //   exercises: [
-    //       {
-    //           exercise_name: "",
-    //           exercise_description: "",
-    //           reps: {
-    //               minmax: [0,0]
-    //           },
-    //           sets: 0,
-    //           muscle_groups: "",
-    //           img_example: ''
-    //       }
-    //   ]
-    // }
+    const initFormState = {
+      routine_name: '',
+      routine_description: '',
+      exercises: [
+        {
+          exercise_name: '',
+          exercise_description: '',
+          reps: {
+            minmax: [0, 0]
+          },
+          sets: 0,
+          muscle_groups: '',
+          img_example: ''
+        }
+      ]
+    };
   
-    // const [formState, setFormState] = useState(initFormState);
-    
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     console.log("Clicked submit");
-    //     console.log(formState);    
-        
-      
-    //     let tempForm = formState
-        
-    //     let myMuscles = tempForm.exercises[0].muscle_groups;
-    //     if(myMuscles.includes(",")){
-    //       let arrayOfMuscles = myMuscles.split(", ");
-    //       tempForm.exercises[0].muscle_groups = arrayOfMuscles;
-    //     }
-       
-    //     // console.log(myMuscles)
-    //     // console.log(arrayOfMuscles);
-    //     setFormState({...tempForm})
-    //     console.log(formState);
-      
-    //     //   const newItem = {
-    //     //   name: 'hello',
-    //     //   description: 'hello',
-    //     //   exercises: [{ name: 'hello' }]
-    //     // };
-    //     console.log("Attempting to post");
-    //     axios.post('https://gitness-ga-earth-api.herokuapp.com/routines', formState)
-    //     .then(res => console.log(res))
-    //     .catch(error => {
-    //       console.error(error);
-    //     });
-    //   }
+    const [formState, setFormState] = useState(initFormState);
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      console.log('Clicked submit');
+      console.log(formState);
+  
+      let tempForm = formState;
+  
+      let myMuscles = tempForm.exercises[0].muscle_groups;
+      if (myMuscles.includes(',')) {
+        let arrayOfMuscles = myMuscles.split(', ');
+        tempForm.exercises[0].muscle_groups = arrayOfMuscles;
+      }
+      setFormState({ ...tempForm });
+      console.log(formState);
+  
+      //   const newItem = {
+      //   name: 'hello',
+      //   description: 'hello',
+      //   exercises: [{ name: 'hello' }]
+      // };
+      console.log('Attempting to post');
+      axios
+        .post('https://gitness-ga-earth-api.herokuapp.com/routines', formState)
+        .then((res) => console.log(res))
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+
 
     return(
         <div className='modalBackground'>
@@ -109,7 +92,7 @@ const Modal = ({closeModal, formState, setFormState, handleSubmit}) => {
             <form onSubmit={handleSubmit}>
             <div className='modaltitle'>
               <h2>Let's build a routine</h2>
-              <button type='button' onClick={() => {handleSubmit()}}>X</button>
+              <button type='button' onClick={() => {setOpenModal(false)}}>X</button>
             </div>
               <div className='modalbody'>
                   <label> Routine Title:*
