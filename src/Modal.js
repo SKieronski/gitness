@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEditOpen, exerciseProp }) => {
-    console.log("Exercise we passed in");
-    console.log(exerciseProp);
+    // console.log("Exercise we passed in");
+    // console.log(exerciseProp);
     
 
     const url = 'https://gitness-ga-earth-api.herokuapp.com/routines'
@@ -14,56 +14,91 @@ const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEdi
   
     const handleSubmit = (event) => {
       event.preventDefault();
-      console.log('Clicked submit');
-      console.log(formState);
-  
-      let tempForm = formState;
-  
-      let myMuscles = tempForm.exercises[0].muscle_groups;
-      if (myMuscles.includes(',')) {
-        let arrayOfMuscles = myMuscles.split(', ');
-        tempForm.exercises[0].muscle_groups = arrayOfMuscles;
+      if(formOpen){
+    
+        let tempForm = formState;
+    
+        let myMuscles = tempForm.exercises[0].muscle_groups;
+        if (myMuscles.includes(',')) {
+          let arrayOfMuscles = myMuscles.split(', ');
+          tempForm.exercises[0].muscle_groups = arrayOfMuscles;
+        }
+        setFormState({ ...tempForm });
+        console.log(formState);
+    
+        console.log('Attempting to post');
+        axios
+          .post('https://gitness-ga-earth-api.herokuapp.com/routines', formState)
+          .then((res) => console.log(res))
+          .catch((error) => {
+            console.error(error);
+          });
+      } else if(editOpen){
+        console.log("In editOpen in handleSubmit")
+        const editURL = `${url}/${exerciseProp._id}`
+        let tempForm = exerciseEditState;
+    
+        let myMuscles = exerciseEditState.muscle_groups;
+        if (myMuscles.includes(',')) {
+          let arrayOfMuscles = myMuscles.split(', ');
+          exerciseEditState.muscle_groups = arrayOfMuscles;
+        }
+        setExerciseEditState({ ...tempForm });
+        console.log(exerciseEditState)
+        console.log(tempForm)
+        console.log(editURL);
+
+        //TESTING URL
+        const testURL = `${url}/6208644c88c360968543743b`;
+        axios.put(url, exerciseEditState)
+          .then(res =>  console.log(res))
+          .catch(error => console.error(error))
       }
-      setFormState({ ...tempForm });
-      console.log(formState);
-  
-      //   const newItem = {
-      //   name: 'hello',
-      //   description: 'hello',
-      //   exercises: [{ name: 'hello' }]
-      // };
-      console.log('Attempting to post');
-      axios
-        .post('https://gitness-ga-earth-api.herokuapp.com/routines', formState)
-        .then((res) => console.log(res))
-        .catch((error) => {
-          console.error(error);
-        });
+      
     };
    
     const handleChange = (event) => {
         event.preventDefault()
-       
-        if(event.target.id === "routine_name"){
+        if(formOpen){
+          if(event.target.id === "routine_name"){
             setFormState({ ...formState, [event.target.id]: event.target.value});
-        } else if(event.target.id === "routine_description") {
-            setFormState({ ...formState, [event.target.id]: event.target.value});
-        } else if (event.target.id === "reps.min"){
+          } else if(event.target.id === "routine_description") {
+              setFormState({ ...formState, [event.target.id]: event.target.value});
+          } else if (event.target.id === "reps.min"){
+              let tempForm = formState;
+              // tempForm.exercises[0].reps.minmax[0] = {...tempForm.exercises[0].reps.minmax[0], "reps.minmax": event.target.value}
+              tempForm.exercises[0].reps.minmax[0] = event.target.value;
+              setFormState({...tempForm});
+          } else if (event.target.id ==="reps.max") {
             let tempForm = formState;
             // tempForm.exercises[0].reps.minmax[0] = {...tempForm.exercises[0].reps.minmax[0], "reps.minmax": event.target.value}
-            tempForm.exercises[0].reps.minmax[0] = event.target.value;
+            tempForm.exercises[0].reps.minmax[1] = event.target.value;
             setFormState({...tempForm});
-        } else if (event.target.id ==="reps.max") {
-          let tempForm = formState;
-          // tempForm.exercises[0].reps.minmax[0] = {...tempForm.exercises[0].reps.minmax[0], "reps.minmax": event.target.value}
-          tempForm.exercises[0].reps.minmax[1] = event.target.value;
-          setFormState({...tempForm});
-        } else {
-          let tempForm = formState;
-          tempForm.exercises[0] = {...tempForm.exercises[0], [event.target.id]: event.target.value}
-          // console.log(tempForm.exercises);
-          setFormState({...tempForm});
+          } else {
+            let tempForm = formState;
+            tempForm.exercises[0] = {...tempForm.exercises[0], [event.target.id]: event.target.value}
+            // console.log(tempForm.exercises);
+            setFormState({...tempForm});
+          }
+        } else if(editOpen){
+          if (event.target.id === "reps.min"){
+            let tempForm = exerciseEditState;
+            // tempForm.exercises[0].reps.minmax[0] = {...tempForm.exercises[0].reps.minmax[0], "reps.minmax": event.target.value}
+            tempForm.reps.minmax[0] = event.target.value;
+            setExerciseEditState({...tempForm});
+          } else if (event.target.id ==="reps.max") {
+            let tempForm = exerciseEditState;
+            // tempForm.exercises[0].reps.minmax[0] = {...tempForm.exercises[0].reps.minmax[0], "reps.minmax": event.target.value}
+            tempForm.reps.minmax[1] = event.target.value;
+            setExerciseEditState({...tempForm});
+          } else {
+            let tempForm = exerciseEditState;
+            tempForm = {...tempForm, [event.target.id]: event.target.value}
+            // console.log(tempForm.exercises);
+            setExerciseEditState({...tempForm});
+          }
         }
+        
         
         //how to go about muscle groups and reps minmax
         // console.log(formState);
@@ -87,6 +122,7 @@ const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEdi
     const [ formState, setFormState] = useState(initFormState)
 
     const [exerciseEditState, setExerciseEditState] = useState(exerciseProp)
+
     if (formOpen) {
      return(
         <div className='modalBackground'>
@@ -150,6 +186,7 @@ const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEdi
                         <button type='button' onClick={() => {setOpenModal(false)}}>X</button>
                       </div>
                         <div className='modalbody'>
+                            {/* <button onClick={}>Delete</button> */}
                             <label> Exercises*:
                               <br/>
                               <label> Name:* 
@@ -176,7 +213,7 @@ const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEdi
                             </label> 
                         </div>
                         <div className='modalfooter'>
-                        <button type='submit' value='submit'/>
+                        <button type='submit' value='submit'> Submit Changes </button>
                           <p> * = required field</p>        
                         </div>
                 </form>
