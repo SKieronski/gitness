@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import Modal from './Modal'
 import './Modal.css'
 import { useState } from 'react';
-function RoutinesBanner({ workouts, setOpenModal }) {
+
+function RoutinesBanner({ workouts, setOpenModal, formOpen, setFormOpen }) {
   const [myWorkout, setMyWorkout] = useState(null);
   
 
@@ -45,7 +46,12 @@ function RoutinesBanner({ workouts, setOpenModal }) {
             <Link to="/routines" id="choiceYellow">
               ALL ROUTINES
             </Link>
-            <button id="choiceYellow" onClick={() => {setOpenModal(true)}}>
+            <button 
+              id="choiceYellow" 
+              onClick={() => {
+                setOpenModal(true)
+                setFormOpen(true)
+                }}>
               <h3>CREATE A ROUTINE</h3>
             </button>
           </div>
