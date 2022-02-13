@@ -28,16 +28,20 @@ function Routines() {
           <div className="routinesCardBox">
             {workouts.map((workout) => {
               return (
-                <Link to={`/routinedetails/${workout._id}`} key={workout._id}>
-                  <div className="card">
-                    <div className="cardTitle">
-                      <h2>{workout.name}</h2>
-                    </div>
-                    <div className="cardDescription">
-                      <p>{workout.exercises[0].name}</p>
-                    </div>
+                <div className="card">
+                  <div className="cardTitle">
+                    <h2>{workout.routine_name}</h2>
                   </div>
-                </Link>
+                  <div className="cardDescription">
+                    <Link
+                      to={`/routinedetails/${workout._id}`}
+                      key={workout._id}
+                      id="routine"
+                    >
+                      More Details
+                    </Link>
+                  </div>
+                </div>
               );
             })}
           </div>
