@@ -1,44 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
 import Nav from './Nav';
+
 function RoutineDetails() {
   let { id } = useParams();
-  const [workouts, setWorkouts] = useState([]);
+  const [workout, setWorkout] = useState(null);
   const url = `https://gitness-ga-earth-api.herokuapp.com/routines/${id}`;
 
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
       .then((json) => {
-        setWorkouts(json);
+        setWorkout(json);
       })
       .catch(console.error);
-  });
-  if (!workouts) {
+  }, []);
+
+  console.log(workout);
+  if (!workout) {
     return <p>Loading workout stuff...</p>;
-  }
-  return (
-    <div className="routineDetailsBox">
-      <Nav />
-      <div className="details-container">
-        <img src={workouts.image} alt={workouts.name} />
-        <div className="details">
-          <h2>{workouts.name}</h2>
-          <h3>{workouts.genus}</h3>
-          <h4>Workout Description</h4>
-          <p>{workouts.description}</p>
-          <a
-            href="https://www.audubon.org/field-guide/bird/acadian-flycatcher"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="read-more"
-          >
-            Read More
-          </a>
+  } else {
+    return (
+      <div className="routineDetailsBox">
+        <Nav />
+        <div className="details-container">
+          <div className="details">
+            <h2>{workout.routine_name}</h2>
+            <h4>Workout Description</h4>
+            <ul className="exercisesUL">
+              {workout.exercises.map((exercise) => {
+                return (
+                  <li className="exercisesLI">
+                    {exercise.exercise_name} / Reps: min{' '}
+                    {exercise.reps.minmax[0]}, max {exercise.reps.minmax[1]} /
+                    Sets: {exercise.sets}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 export default RoutineDetails;
