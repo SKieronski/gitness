@@ -8,11 +8,7 @@ import Footer from './Footer';
 import Spacer from './Spacer';
 import Modal from './Modal';
 import axios from 'axios';
-
-// =======
 import { useState, useEffect } from 'react';
-// import axios from 'axios';
-// >>>>>>> main
 
 function App() {
   const [workouts, setWorkouts] = useState([]);
@@ -28,6 +24,60 @@ function App() {
       .catch(console.error);
   }, []);
   console.log(workouts);
+
+  
+   
+  
+  const initFormState = {
+    routine_name: "",
+    routine_description: "",
+    exercises: [
+        {
+            exercise_name: "",
+            exercise_description: "",
+            reps: {
+                minmax: [0,0]
+            },
+            sets: 0,
+            muscle_groups: "",
+            img_example: ''
+        }
+    ]
+  }
+
+  const [formState, setFormState] = useState(initFormState);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log("Clicked submit");
+        console.log(formState);    
+        
+      
+        let tempForm = formState
+        
+        let myMuscles = tempForm.exercises[0].muscle_groups;
+        if(myMuscles.includes(",")){
+          let arrayOfMuscles = myMuscles.split(", ");
+          tempForm.exercises[0].muscle_groups = arrayOfMuscles;
+        }
+       
+        // console.log(myMuscles)
+        // console.log(arrayOfMuscles);
+        setFormState({...tempForm})
+        console.log(formState);
+      
+        //   const newItem = {
+        //   name: 'hello',
+        //   description: 'hello',
+        //   exercises: [{ name: 'hello' }]
+        // };
+        console.log("Attempting to post");
+        axios.post('https://gitness-ga-earth-api.herokuapp.com/routines', formState)
+        .then(res => console.log(res))
+        .catch(error => {
+          console.error(error);
+        });
+      }
   //   const [routinesData, setRoutinesData] = useState([]);
   // this is the collection of all routines from the db
 
@@ -71,7 +121,7 @@ function App() {
   //   // console.log(newRoutine)
   // };
 
-  //AXIOS CALLS
+  //AXIOS CALLS=====================================================================
 
   //POST NEW
   // const handleSubmit = (routine) => {
@@ -106,7 +156,14 @@ function App() {
 
   return (
     <div>
-      {openModal && <Modal closeModal={ setOpenModal }/>}
+      {/* <Modal /> */}
+      {openModal && 
+        <Modal 
+          closeModal={ setOpenModal } 
+          formState = { formState }
+          setFormState = { setFormState }
+          handleSubmit = { handleSubmit }
+        />}
       <div className="scrolling-box">
         <section id="home">
           <Nav />
@@ -118,7 +175,7 @@ function App() {
             <input type='text' value = { newRoutine } onChange = { handleChange }/>
             <input type='submit' />
           </form> */}
-          <RoutinesBanner workouts={workouts} setOpenModal={setOpenModal}/>
+          <RoutinesBanner workouts={workouts} setOpenModal={setOpenModal} />
         </section>
         <Spacer />
         <section id="team">
