@@ -45,10 +45,7 @@ function RoutinesBanner({ workouts, setOpenModal }) {
             <Link to="/routines" id="choiceYellow">
               ALL ROUTINES
             </Link>
-            <button id="choiceYellow" onClick={() => {
-              console.log("Clicked create button");
-              setOpenModal(true)}
-            }>
+            <button id="choiceYellow" onClick={() => {setOpenModal(true)}}>
               <h3>CREATE A ROUTINE</h3>
             </button>
           </div>
