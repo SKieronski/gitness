@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import Modal from './Modal'
 import './Modal.css'
 import { useState } from 'react';
+import axios from 'axios';
 
-function RoutinesBanner({ workouts, setOpenModal, formOpen, setFormOpen }) {
+function RoutinesBanner({ update, setUpdate, workouts, setOpenModal, formOpen, setFormOpen }) {
   const [myWorkout, setMyWorkout] = useState(null);
   
 
@@ -16,6 +17,19 @@ function RoutinesBanner({ workouts, setOpenModal, formOpen, setFormOpen }) {
       }
     });
   };
+
+  const handleDelete = (event) => {
+    // console.log(myExercise._id)
+    console.log(myWorkout)
+    axios
+      .delete(`https://gitness-ga-earth-api.herokuapp.com/routines/${myWorkout._id}`, myWorkout)
+      .then(res => console.log(res))
+      .then(() => setUpdate(!update))
+      .catch(error => console.log(error))
+    setMyWorkout(null)
+  }
+
+
   if (!myWorkout) {
     return (
       <div className="routineBox">
@@ -72,6 +86,9 @@ function RoutinesBanner({ workouts, setOpenModal, formOpen, setFormOpen }) {
               >
                 More Details
               </Link>
+              <button onClick={handleDelete}>
+                Delete this Routine
+              </button>
             </div>
           </div>
           <div className="routineSelection">

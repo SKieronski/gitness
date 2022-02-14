@@ -3,14 +3,19 @@ import './Modal.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEditOpen, exerciseProp }) => {
+const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEditOpen, exerciseProp, setUpdate, update }) => {
     // console.log("Exercise we passed in");
     // console.log(exerciseProp);
     
 
-    const url = 'https://gitness-ga-earth-api.herokuapp.com/routines'
+    const url = 'https://gitness-ga-earth-api.herokuapp.com'
     
-
+    // const handleDelete = (event) => {
+    //   console.log(exerciseProp._id)
+    //   console.log(event)
+    //   // axios
+    //   //   .delete(`${url}/exercises/${exerciseProp._id}`, )
+    // }
   
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -28,14 +33,18 @@ const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEdi
     
         console.log('Attempting to post');
         axios
-          .post('https://gitness-ga-earth-api.herokuapp.com/routines', formState)
+          .post(`${url}/routines`, formState)
           .then((res) => console.log(res))
+          .then(() => {
+            setUpdate(!update)
+            setOpenModal(false)
+          })
           .catch((error) => {
             console.error(error);
           });
       } else if(editOpen){
         console.log("In editOpen in handleSubmit")
-        const editURL = `${url}/${exerciseProp._id}`
+        const editURL = `${url}/exercises/${exerciseProp._id}`
         let tempForm = exerciseEditState;
     
         let myMuscles = exerciseEditState.muscle_groups;
@@ -44,22 +53,30 @@ const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEdi
           exerciseEditState.muscle_groups = arrayOfMuscles;
         }
         setExerciseEditState({ ...tempForm });
-        console.log(exerciseEditState)
-        console.log(tempForm)
-        console.log(editURL);
-
-        //TESTING URL
-        const testURL = `${url}/6208644c88c360968543743b`;
-        axios.put(url, exerciseEditState)
+        
+        axios.put(editURL, exerciseEditState)
           .then(res =>  console.log(res))
+          .then(() => {
+            setUpdate(!update)
+            setOpenModal(false)
+          })
           .catch(error => console.error(error))
       }
       
     };
    
-    const handleChange = (event) => {
+    const handleChange = (event, index) => {
         event.preventDefault()
+        // const index = event.target.name
         if(formOpen){
+          console.log(index)
+          console.log(parseInt(event.target.id))
+          // setExerciseFields(item => {
+          //   const newExercises = item.slice()
+          //   newExercises[index].value = item.target.value
+
+          //   return newExercises
+          // })
           if(event.target.id === "routine_name"){
             setFormState({ ...formState, [event.target.id]: event.target.value});
           } else if(event.target.id === "routine_description") {
@@ -98,10 +115,6 @@ const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEdi
             setExerciseEditState({...tempForm});
           }
         }
-        
-        
-        //how to go about muscle groups and reps minmax
-        // console.log(formState);
     }
     const initFormState = {
       routine_name: '',
@@ -119,9 +132,48 @@ const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEdi
         }
       ]
     };
-    const [ formState, setFormState] = useState(initFormState)
 
+
+    const [ formState, setFormState] = useState(initFormState)
     const [exerciseEditState, setExerciseEditState] = useState(exerciseProp)
+    const [ exerciseFields, setExerciseFields ] = useState(initFormState.exercises)
+    // console.log(exerciseFields)
+
+    // const addExercise = (e) => {
+    //   e.preventDefault()
+    //   // this is a function that will add an object to the array that is exercises
+    //   setExerciseFields(item => {
+    //     return ([...formState.exercises, { exercise: {
+    //       exercise_name: '',
+    //       exercise_description: '',
+    //       reps: {
+    //         minmax: [0, 0]
+    //       },
+    //       sets: 0,
+    //       muscle_groups: '',
+    //       img_example: ''
+    //       }
+    //     }
+    //     ])
+    //     // setUpdate(true)
+    //   })
+    // }
+    //as it is, the fields are loading. but now, whenever you type in the name field,
+    //it starts typing in all the name fields. 
+    //so i need to reference MERN lab and see how we specificied that.
+
+
+    // const handleAdd = (event) => {
+    //   event.preventDefault()
+    //   const index = event.target.id
+    //   setExerciseFields(event => {
+    //     const newExercises = event.slice()
+    //     newExercises[index].value = event.target.value
+
+    //     return newExercises
+    //   })
+    // }
+
 
     if (formOpen) {
      return(
@@ -144,28 +196,45 @@ const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEdi
                   <br/>
                   <label> Exercises*:
                     <br/>
-                    <label> Name:* 
-                     <input id='exercise_name' type='text' onChange={handleChange} value={formState.exercises[0].exercise_name}/>
-                    </label> 
-                    <label> Description:*
-                     <input id='exercise_description' type='text' onChange={handleChange} value={formState.exercises[0].exercise_description}/>
-                    </label> 
-                    <label> Sets:* 
-                     <input id='sets' type='text' onChange={handleChange} value={formState.exercises[0].sets}/>
-                    </label> 
-                    <label> Min Reps:* 
-                     <input id='reps.min' type='text' onChange={handleChange} value={formState.exercises[0].reps.minmax[0]}/>
-                    </label> 
-                    <label> Max Reps:* 
-                     <input id='reps.max' type='text' onChange={handleChange} value={formState.exercises[0].reps.minmax[1]}/>
-                    </label> 
-                    <label> Muscle (Groups)*: 
-                     <input id='muscle_groups' type='text' onChange={handleChange} value={formState.exercises[0].muscle_groups}/>
-                    </label> 
-                    <label> Image, Video, or GIF: 
-                     <input id='img_example' type='text' onChange={handleChange} value={formState.exercises[0].img_example}/>
-                    </label> 
+                  {exerciseFields.map((index) => {
+                    
+                    return(
+                      <>
+                        {console.log(index)}
+                      <div key={ index }>
+                        <label> Name:* 
+                          <input type='text' onChange={() => {handleChange()}} value={formState.exercises[0].exercise_name.index}/>
+                        </label> 
+                        <label> Description:*
+                          <input id='exercise_description' type='text' onChange={handleChange} value={formState.exercises[0].exercise_description}/>
+                        </label> 
+                        <label> Sets:* 
+                          <input id='sets' type='text' onChange={handleChange} value={formState.exercises[0].sets}/>
+                        </label> 
+                        <label> Min Reps:* 
+                          <input id='reps.min' type='text' onChange={handleChange} value={formState.exercises[0].reps.minmax[0]}/>
+                        </label> 
+                        <label> Max Reps:* 
+                          <input id='reps.max' type='text' onChange={handleChange} value={formState.exercises[0].reps.minmax[1]}/>
+                        </label> 
+                        <label> Muscle (Groups)*: 
+                          <input id='muscle_groups' type='text' onChange={handleChange} value={formState.exercises[0].muscle_groups}/>
+                        </label> 
+                        <label> Image, Video, or GIF: 
+                         <input id='img_example' type='text' onChange={handleChange} value={formState.exercises[0].img_example}/>
+                        </label> 
+                      </div>
+                      </>
+                      
+                    )
+                   })
+                  } 
                   </label> 
+
+                  {/* <button 
+                    type='button'
+                    onClick={(e) => {addExercise(e)} }
+                    > + </button> */}
               </div>
               <div className='modalfooter'>
                <button type='submit' value='submit'/>
@@ -186,7 +255,7 @@ const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEdi
                         <button type='button' onClick={() => {setOpenModal(false)}}>X</button>
                       </div>
                         <div className='modalbody'>
-                            {/* <button onClick={}>Delete</button> */}
+                            {/* <button onClick={() => {handleDelete()}}>Delete</button> */}
                             <label> Exercises*:
                               <br/>
                               <label> Name:* 

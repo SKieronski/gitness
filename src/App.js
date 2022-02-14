@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react';
 function App() {
   const [workouts, setWorkouts] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [ update, setUpdate ] = useState(false)
 
   useEffect(() => {
     fetch('https://gitness-ga-earth-api.herokuapp.com/')
@@ -22,15 +23,15 @@ function App() {
       })
 
       .catch(console.error);
-  }, []);
+  }, [update]);
   console.log(workouts);
 
   const [ formOpen, setFormOpen ] = useState(false)
   const [ editOpen, setEditOpen ] = useState(false)
+ 
 
   return (
     <div>
-      {/* <Modal /> */}
       {openModal && (
         <Modal 
           openModal={ openModal }
@@ -38,7 +39,9 @@ function App() {
           formOpen={ formOpen }
           setFormOpen={ setFormOpen }
           editOpen={ editOpen }
-          setEditOpen={ setEditOpen }/>
+          setEditOpen={ setEditOpen }
+          update={ update }
+          setUpdate={ setUpdate }/>
       )}
       <div className="scrolling-box">
         <section id="home">
@@ -47,7 +50,14 @@ function App() {
         </section>
         <Spacer />
         <section id="routines">
-          <RoutinesBanner workouts={workouts} openModal={openModal} setOpenModal={setOpenModal} formOpen={formOpen} setFormOpen={setFormOpen}/>
+          <RoutinesBanner 
+            setUpdate={ setUpdate } 
+            update={ update } 
+            workouts={workouts} 
+            openModal={openModal} 
+            setOpenModal={setOpenModal} 
+            formOpen={formOpen} 
+            setFormOpen={setFormOpen}/>
         </section>
         {/* <Spacer /> */}
         <section id="team">
