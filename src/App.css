@@ -50,7 +50,7 @@ body {
 .scrolling-box {
   background-color: black;
   display: block;
-  height: 1000px;
+  height: 768px;
   overflow-y: scroll;
   scroll-behavior: smooth;
   text-align: center;
@@ -247,7 +247,7 @@ a {
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
 }
-.gifBox {
+.leftBox {
   height: 500px;
   width: 500px;
   background-color: #f9ef23;

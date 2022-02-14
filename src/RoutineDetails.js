@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Nav from './Nav';
 import Modal from './Modal';
-import './Modal.css'
+import './Modal.css';
 
 /* TODO ==========================================
 1. Setup the modal so that it pops up when you click an edit button. DONE
@@ -14,9 +14,9 @@ import './Modal.css'
 
 function RoutineDetails() {
   //Setup Modal props
-  const [ openModal, setOpenModal ] = useState(false);
-  const [ formOpen, setFormOpen ] = useState(false)
-  const [ editOpen, setEditOpen ] = useState(false)
+  const [openModal, setOpenModal] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
 
   let { id } = useParams();
   const [routine, setRoutine] = useState(null);
@@ -41,37 +41,38 @@ function RoutineDetails() {
       .catch(console.error);
   }, []);
 
-  
-
   console.log(routine);
   if (!routine) {
     return <p>Loading routine...</p>;
   } else {
-    if(!myExercise){ //if the user hasn't clicked an exercise yet, info pane has "Click an exercise!"
+    if (!myExercise) {
+      //if the user hasn't clicked an exercise yet, info pane has "Click an exercise!"
       return (
         <div>
+          <Nav />
           <h1>
             <span id="yellowFont">{routine.routine_name}</span>
           </h1>
+          <p>{routine.routine_description}</p>
           {/* <h2>{routine.routine_description}</h2> */}
           <div className="routineDetailsBox">
-            <Nav />
-            
-            <div className="gifBox"></div>
+            <div className="leftBox">
+              <div className="gifBox"></div>
+            </div>
             <div className="details-container">
               <div className="details">
                 {/* <h2 className="routineName">{routine.routine_name}</h2> */}
-                <h4>{routine.routine_description}</h4>
+
                 <ol className="exercisesOL">
                   {routine.exercises.map((exercise) => {
                     return (
                       <li className="exercisesLI" key={exercise._id}>
-                        <button onClick={() => {
-                          changeExercise(exercise._id);
-                        }}>
-                          {exercise.exercise_name} / Reps: min{' '}
-                          {exercise.reps.minmax[0]}, max {exercise.reps.minmax[1]} /
-                          Sets: {exercise.sets}
+                        <button
+                          onClick={() => {
+                            changeExercise(exercise._id);
+                          }}
+                        >
+                          {exercise.exercise_name}
                         </button>
                       </li>
                     );
@@ -82,46 +83,54 @@ function RoutineDetails() {
           </div>
         </div>
       );
-    } else { //if the user has clicked an exercise, info pane has all the exercise details, including an edit button to pop up the modal
+    } else {
+      //if the user has clicked an exercise, info pane has all the exercise details, including an edit button to pop up the modal
       return (
         <div>
           <h1>
             <span id="yellowFont">{routine.routine_name}</span>
           </h1>
-          {/* <h2>{routine.routine_description}</h2> */}
+          <p>{routine.routine_description}</p>
           <div className="routineDetailsBox">
             <Nav />
             {openModal && (
-              <Modal 
+              <Modal
                 openModal={openModal}
-                setOpenModal={setOpenModal} 
-                formOpen={ formOpen }
-                setFormOpen={ setFormOpen }
-                editOpen={ editOpen }
-                setEditOpen={ setEditOpen }
-                exerciseProp={myExercise}/>
+                setOpenModal={setOpenModal}
+                formOpen={formOpen}
+                setFormOpen={setFormOpen}
+                editOpen={editOpen}
+                setEditOpen={setEditOpen}
+                exerciseProp={myExercise}
+              />
             )}
-            <div className="gifBox"></div>
+
+            <div className="leftBox">
+              <div className="gifBox"></div>
+            </div>
             <div className="details-container">
               <div className="details">
                 {/* <h2 className="routineName">{routine.routine_name}</h2> */}
-                <h4>{routine.routine_description}</h4>
+
                 <ol className="exercisesOL">
                   {routine.exercises.map((exercise) => {
                     return (
                       <li className="exercisesLI" key={exercise._id}>
-                        <button onClick={() => {
-                          changeExercise(exercise._id);
-                        }}>
-                          {exercise.exercise_name} / Reps: min{' '}
-                          {exercise.reps.minmax[0]}, max {exercise.reps.minmax[1]} /
-                          Sets: {exercise.sets}
+                        <button
+                          onClick={() => {
+                            changeExercise(exercise._id);
+                          }}
+                        >
+                          {exercise.exercise_name}
                         </button>
-                        <button id="choiceYellow" onClick={() => {
-                          console.log("Clicked update button");
-                          setOpenModal(true)
-                          setEditOpen(true)
-                        }}>
+                        <button
+                          id="choiceYellow"
+                          onClick={() => {
+                            console.log('Clicked update button');
+                            setOpenModal(true);
+                            setEditOpen(true);
+                          }}
+                        >
                           UPDATE
                         </button>
                       </li>
@@ -137,4 +146,3 @@ function RoutineDetails() {
   }
 }
 export default RoutineDetails;
-
