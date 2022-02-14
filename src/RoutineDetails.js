@@ -5,13 +5,6 @@ import Modal from './Modal';
 import './Modal.css'
 import axios from 'axios';
 
-/* TODO ==========================================
-1. Setup the modal so that it pops up when you click an edit button. DONE
-2. Make sure the modal contains the right exercise info to be changed. DONE 
-3. Add a delete button to the modal that deletes the whole exercise DONE
-4. The submit button should say "Submit Changes" and will do a patch/put request for that exercise in this routine. DONE 
-5. When edit OR delete is clicked, the modal closes and the page is updated accordingly. DONE
-==================================================*/
 
 function RoutineDetails() {
   //Setup Modal props

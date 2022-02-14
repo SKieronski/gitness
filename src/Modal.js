@@ -133,9 +133,9 @@ const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEdi
       ]
     };
 
+    const [exerciseEditState, setExerciseEditState] = useState(exerciseProp)
 
     const [ formState, setFormState] = useState(initFormState)
-    const [exerciseEditState, setExerciseEditState] = useState(exerciseProp)
     const [ exerciseFields, setExerciseFields ] = useState(initFormState.exercises)
     // console.log(exerciseFields)
 
@@ -255,7 +255,6 @@ const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEdi
                         <button type='button' onClick={() => {setOpenModal(false)}}>X</button>
                       </div>
                         <div className='modalbody'>
-                            {/* <button onClick={() => {handleDelete()}}>Delete</button> */}
                             <label> Exercises*:
                               <br/>
                               <label> Name:* 
