@@ -43,27 +43,28 @@ function RoutineDetails() {
       })
       .catch(console.error);
   }, [update]);
-
-  
   console.log(routine);
   if (!routine) {
     return <p>Loading routine...</p>;
   } else {
-    if(!myExercise){ //if the user hasn't clicked an exercise yet, info pane has "Click an exercise!"
+    if (!myExercise) {
+      //if the user hasn't clicked an exercise yet, info pane has "Click an exercise!"
       return (
         <div>
+          <Nav />
           <h1>
             <span id="yellowFont">{routine.routine_name}</span>
           </h1>
+          <p>{routine.routine_description}</p>
           {/* <h2>{routine.routine_description}</h2> */}
           <div className="routineDetailsBox">
-            <Nav />
-            
-            <div className="gifBox"></div>
+            <div className="leftBox">
+              <div className="gifBox"></div>
+            </div>
             <div className="details-container">
               <div className="details">
                 {/* <h2 className="routineName">{routine.routine_name}</h2> */}
-                <h4>{routine.routine_description}</h4>
+
                 <ol className="exercisesOL">
                   {routine.exercises.map((exercise) => {
                     return (
@@ -82,17 +83,18 @@ function RoutineDetails() {
           </div>
         </div>
       );
-    } else { //if the user has clicked an exercise, info pane has all the exercise details, including an edit button to pop up the modal
+    } else {
+      //if the user has clicked an exercise, info pane has all the exercise details, including an edit button to pop up the modal
       return (
         <div>
           <h1>
             <span id="yellowFont">{routine.routine_name}</span>
           </h1>
-          {/* <h2>{routine.routine_description}</h2> */}
+          <p>{routine.routine_description}</p>
           <div className="routineDetailsBox">
             <Nav />
             {openModal && (
-              <Modal 
+              <Modal
                 openModal={openModal}
                 setOpenModal={setOpenModal} 
                 formOpen={ formOpen }
@@ -103,11 +105,14 @@ function RoutineDetails() {
                 setUpdate={setUpdate}
                 update={update}/>
             )}
-            <div className="gifBox"></div>
+
+            <div className="leftBox">
+              <div className="gifBox"></div>
+            </div>
             <div className="details-container">
               <div className="details">
                 {/* <h2 className="routineName">{routine.routine_name}</h2> */}
-                <h4>{routine.routine_description}</h4>
+
                 <ol className="exercisesOL">
                   {routine.exercises.map((exercise) => {
                     return (
@@ -155,4 +160,3 @@ function RoutineDetails() {
   }
 }
 export default RoutineDetails;
-

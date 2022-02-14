@@ -173,9 +173,7 @@ const Modal = ({openModal, setOpenModal, formOpen, setFormOpen, editOpen, setEdi
     //     return newExercises
     //   })
     // }
-
-
-    if (formOpen) {
+        if (formOpen) {
      return(
         <div className='modalBackground'>
           <div className='modalContainer'>
