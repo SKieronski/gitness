@@ -215,7 +215,6 @@ a {
   margin-left: 100px;
   flex-wrap: wrap;
   gap: 30px;
-
   justify-items: center;
 }
 #workoutRoutineTitle {
@@ -246,7 +245,7 @@ a {
 #routineDetailsBox {
   display: flex;
   width: 80%;
-  height: 700px;
+  height: 1000px;
   align-items: center;
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
@@ -282,18 +281,17 @@ a {
   list-style: none;
   text-align: center;
   height: 50px;
-
   color: black;
   font-family: 'Anton', sans-serif;
 }
 
 #gifBox {
-  height: 200px;
+  height: 600px;
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background-color: white;
+  background-color: aliceblue;
 }
 
 #exerciseName {
@@ -332,7 +330,7 @@ a {
 .topBox1 {
   height: 50%;
   width: 100%;
-  background-image: url('https://mail.google.com/mail/u/1?ui=2&ik=1e0e11b481&attid=0.1.1&permmsgid=msg-f:1724424646004921420&th=17ee6314430d544c&view=fimg&fur=ip&sz=s0-l75-ft&attbid=ANGjdJ9ZZbaOeS37fJ-ETUNxp5VcMXYzeYlXmoP95C03yx0DiMzMjMvvRdwJcKLfxhcuwzrGnqJbWuEKZOPzAJCVZ1XaipwbdN3lvG6tZ4eONkiWqDA_-gMUC6_kSgc&disp=emb');
+  background-image: url('https://i.imgur.com/yvvxTND.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -356,6 +354,15 @@ a {
 #bottomBox {
   height: 50%;
   width: 100%;
+}
+#aboutText {
+  color: black;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+#aboutTitle {
+  color: black;
 }
 
 /* Footer Component */
