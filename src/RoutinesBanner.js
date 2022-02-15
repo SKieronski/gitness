@@ -4,29 +4,30 @@ import './Modal.css'
 import { useState } from 'react';
 import axios from 'axios';
 
-function RoutinesBanner({ update, setUpdate, workouts, setOpenModal, formOpen, setFormOpen }) {
+function RoutinesBanner({ update, setUpdate, workouts, setOpenModal, setFormOpen }) {
+  
   const [myWorkout, setMyWorkout] = useState(null);
   
-
-  console.log(workouts);
   const changeMyStuff = (workoutID) => {
+
     workouts.forEach((workout) => {
       if (workout._id === workoutID) {
-        setMyWorkout(workout);
-        return;
+        setMyWorkout(workout)
+        return
       }
-    });
-  };
+    })
+    
+  }
 
   const handleDelete = (event) => {
-    // console.log(myExercise._id)
-    console.log(myWorkout)
+
     axios
       .delete(`https://gitness-ga-earth-api.herokuapp.com/routines/${myWorkout._id}`, myWorkout)
       .then(res => console.log(res))
       .then(() => setUpdate(!update))
       .catch(error => console.log(error))
     setMyWorkout(null)
+
   }
 
 
@@ -48,14 +49,14 @@ function RoutinesBanner({ update, setUpdate, workouts, setOpenModal, formOpen, s
                 <button
                   id="choice"
                   onClick={() => {
-                    console.log('In button onClick');
-                    changeMyStuff(workout._id);
+                    console.log('In button onClick')
+                    changeMyStuff(workout._id)
                   }}
                   key={workout._id}
                 >
                   {workout.routine_name}
                 </button>
-              );
+              )
             })}
             <Link to="/routines" id="choiceYellow">
               ALL ROUTINES
@@ -71,7 +72,7 @@ function RoutinesBanner({ update, setUpdate, workouts, setOpenModal, formOpen, s
           </div>
         </div>
       </div>
-    );
+    )
   } else {
     return (
       <div className="routineBox">
@@ -97,8 +98,8 @@ function RoutinesBanner({ update, setUpdate, workouts, setOpenModal, formOpen, s
                 <button
                   id="choice"
                   onClick={() => {
-                    console.log('in second onClick');
-                    changeMyStuff(workout._id);
+                    console.log('in second onClick')
+                    changeMyStuff(workout._id)
                   }}
                   key={workout._id}
                 >
@@ -110,7 +111,6 @@ function RoutinesBanner({ update, setUpdate, workouts, setOpenModal, formOpen, s
               ALL ROUTINES
             </Link>
             <button id="choiceYellow" onClick={() => {
-              console.log("Clicked create button");
               setOpenModal(true)
             }}>
               <h3>CREATE A ROUTINE</h3>

@@ -1,33 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import Nav from './Nav';
-import Modal from './Modal';
-import './Modal.css';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import Nav from './Nav'
+import Modal from './Modal'
+import './Modal.css'
+import axios from 'axios'
 
 function RoutineDetails() {
-  //Setup Modal props
-  const [openModal, setOpenModal] = useState(false);
-  const [formOpen, setFormOpen] = useState(false);
-  const [editOpen, setEditOpen] = useState(false);
-  const [update, setUpdate] = useState(false);
-  let { id } = useParams();
-  const [routine, setRoutine] = useState(null);
-  const [myExercise, setMyExercise] = useState(null);
-  const url = `https://gitness-ga-earth-api.herokuapp.com/routines/${id}`;
+  
+  const [ openModal, setOpenModal ] = useState(false)
+  const [ formOpen, setFormOpen ] = useState(false)
+  const [ editOpen, setEditOpen ] = useState(false)
+  const [update, setUpdate] = useState(false)
+  let { id } = useParams()
+  const [routine, setRoutine] = useState(null)
+  const [myExercise, setMyExercise] = useState(null)
+  const url = `https://gitness-ga-earth-api.herokuapp.com/routines/${id}`
 
   const changeExercise = (exerciseID) => {
+
     routine.exercises.forEach((exercise) => {
       if (exercise._id === exerciseID) {
-        setMyExercise(exercise);
 
-        return;
+        setMyExercise(exercise)
+        return
+
       }
-    });
-  };
+    })
+
+  }
 
   const handleDelete = (event) => {
-    console.log(myExercise._id);
+    
     axios
       .delete(
         `https://gitness-ga-earth-api.herokuapp.com/exercises/${myExercise._id}`,
@@ -40,16 +43,17 @@ function RoutineDetails() {
     fetch(url)
       .then((res) => res.json())
       .then((json) => {
-        setRoutine(json);
+        setRoutine(json)
       })
-      .catch(console.error);
-  }, [update]);
-  console.log(routine);
+      .catch(console.error)
+  }, [update])
+
+
+
   if (!routine) {
-    return <p>Loading routine...</p>;
+    return <p>Loading routine...</p>
   } else {
     if (!myExercise) {
-      //if the user hasn't clicked an exercise yet, info pane has "Click an exercise!"
       return (
         <div id="pageBox">
           <Nav />
@@ -71,22 +75,22 @@ function RoutineDetails() {
                         <button
                           id="choice"
                           onClick={() => {
-                            changeExercise(exercise._id);
+                            changeExercise(exercise._id)
                           }}
                         >
                           {exercise.exercise_name}
                         </button>
                       </li>
-                    );
+                    )
                   })}
                 </ol>
               </div>
             </div>
           </div>
         </div>
-      );
+      )
     } else {
-      //if the user has clicked an exercise, info pane has all the exercise details, including an edit button to pop up the modal
+
       return (
         <div id="pageBox">
           <Nav />
@@ -129,7 +133,6 @@ function RoutineDetails() {
             </div>
             <div id="details-container">
               <div id="details">
-                {/* <h2 id="routineName">{routine.routine_name}</h2> */}
                 <ol id="exercisesOL">
                   {routine.exercises.map((exercise) => {
                     return (
@@ -147,10 +150,10 @@ function RoutineDetails() {
                             <button
                               id="choiceYellow"
                               onClick={() => {
-                                console.log('Clicked update button');
-                                changeExercise(exercise._id);
-                                setOpenModal(true);
-                                setEditOpen(true);
+                                console.log('Clicked update button')
+                                changeExercise(exercise._id)
+                                setOpenModal(true)
+                                setEditOpen(true)
                               }}
                             >
                               UPDATE
@@ -158,9 +161,9 @@ function RoutineDetails() {
                             <button
                               id="choiceYellow"
                               onClick={() => {
-                                console.log('clicked delete button');
-                                changeExercise(exercise._id);
-                                handleDelete();
+                                console.log('clicked delete button')
+                                changeExercise(exercise._id)
+                                handleDelete()
                               }}
                             >
                               DELETE
@@ -168,15 +171,15 @@ function RoutineDetails() {
                           </>
                         )}
                       </li>
-                    );
+                    )
                   })}
                 </ol>
               </div>
             </div>
           </div>
         </div>
-      );
+      )
     }
   }
 }
-export default RoutineDetails;
+export default RoutineDetails
