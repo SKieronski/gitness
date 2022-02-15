@@ -20,6 +20,7 @@ function RoutineDetails() {
     routine.exercises.forEach((exercise) => {
       if (exercise._id === exerciseID) {
         setMyExercise(exercise);
+
         return;
       }
     });
@@ -92,7 +93,7 @@ function RoutineDetails() {
           <h1>
             <span id="yellowFont">{routine.routine_name}</span>
           </h1>
-          <p id="routineDescriotion">{routine.routine_description}</p>
+          <p id="routineDescription">{routine.routine_description}</p>
           <div id="routineDetailsBox">
             {openModal && (
               <Modal
@@ -112,14 +113,18 @@ function RoutineDetails() {
               <h2 id="exerciseName"> {myExercise.exercise_name}</h2>
               <h4 id="exerciseDetails">{myExercise.exercise_description}</h4>
               <h4 id="exerciseDetails">
-                {myExercise.reps.minmax}/{myExercise.sets}
+                Reps: {myExercise.reps.minmax}/ Sets:{myExercise.sets}
               </h4>
               <h4 id="exerciseDetails">
-                {myExercise.muscle_groups[0]},{myExercise.muscle_groups[1]}
+                Targeted Muscle Groups: {myExercise.muscle_groups[0]},
+                {myExercise.muscle_groups[1]}
               </h4>
+              {console.log(myExercise.img_example)}
               <div
                 id="gifBox"
-                styles={{ backgroundImage: `url('${myExercise.img_example}')` }}
+                style={{
+                  backgroundImage: `url(${myExercise.img_example})`
+                }}
               ></div>
             </div>
             <div id="details-container">
