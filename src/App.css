@@ -239,37 +239,72 @@ a {
   padding: 5px;
 }
 /* Routine Details Component */
-.routineDetailsBox {
+#pageBox {
+  margin-left: 150px;
+  margin-top: 50px;
+}
+#routineDetailsBox {
   display: flex;
-  width: 1000px;
-  height: 500px;
+  width: 80%;
+  height: 700px;
   align-items: center;
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
 }
-.leftBox {
-  height: 500px;
-  width: 500px;
+#leftBox {
+  height: 80%;
+  width: 50%;
   background-color: #f9ef23;
-  margin-top: 100px;
   display: flex;
   border: 1px solid white;
+  display: flex;
+  flex-direction: column;
 }
-.details-container {
-  height: 500px;
+#details-container {
+  display: flex;
   width: 500px;
-  margin-top: 100px;
-  display: flex;
-  border: 1px solid white;
+  /* background-color: white; */
+  display: block;
+  height: 80%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  text-align: center;
+  overscroll-behavior: contain;
 }
-.details {
-  padding: 10px;
-}
-.routineName {
+
+#routineName {
   font-family: 'Anton', sans-serif;
 }
-.exercisesOL {
-  margin: 10px;
+#routineDescription {
+  font-family: Arial, Helvetica, sans-serif;
+}
+#exercisesOL {
+  list-style: none;
+  text-align: center;
+  height: 50px;
+
+  color: black;
+  font-family: 'Anton', sans-serif;
+}
+
+#gifBox {
+  height: 200px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: white;
+}
+
+#exerciseName {
+  font-family: 'Anton', sans-serif;
+  color: black;
+  margin-left: 10px;
+}
+#exerciseDetails {
+  color: black;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* About Component */
@@ -361,9 +396,6 @@ a {
   text-align: left;
   color: black;
 }
-/* .logo {
-  margin-top: 30px;
-} */
 
 .spacer {
   height: 100px;
