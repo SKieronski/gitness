@@ -1,30 +1,28 @@
 
-import './App.css';
-import Header from './Header';
-import Nav from './Nav';
-import About from './About';
-import RoutinesBanner from './RoutinesBanner';
-import Footer from './Footer';
-import Spacer from './Spacer';
-import Modal from './Modal';
-import { useState, useEffect } from 'react';
+import './App.css'
+import Header from './Header'
+import Nav from './Nav'
+import About from './About'
+import RoutinesBanner from './RoutinesBanner'
+import Footer from './Footer'
+import Spacer from './Spacer'
+import Modal from './Modal'
+import { useState, useEffect } from 'react'
 
 function App() {
-  const [workouts, setWorkouts] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
+  const [workouts, setWorkouts] = useState([])
+  const [openModal, setOpenModal] = useState(false)
   const [ update, setUpdate ] = useState(false)
 
   useEffect(() => {
     fetch('https://gitness-ga-earth-api.herokuapp.com/')
       .then((res) => res.json())
-
       .then((json) => {
-        setWorkouts(json);
+        setWorkouts(json)
       })
+      .catch(console.error)
+  }, [update])
 
-      .catch(console.error);
-  }, [update]);
-  console.log(workouts);
 
   const [ formOpen, setFormOpen ] = useState(false)
   const [ editOpen, setEditOpen ] = useState(false)
@@ -59,7 +57,6 @@ function App() {
             formOpen={formOpen} 
             setFormOpen={setFormOpen}/>
         </section>
-        {/* <Spacer /> */}
         <section id="team">
           <About />
         </section>
@@ -68,7 +65,7 @@ function App() {
         </section>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
