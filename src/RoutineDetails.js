@@ -40,6 +40,7 @@ function RoutineDetails() {
   };
 
   useEffect(() => {
+    console.log("Use effect triggered in RoutineDetails")
     fetch(url)
       .then((res) => res.json())
       .then((json) => {
