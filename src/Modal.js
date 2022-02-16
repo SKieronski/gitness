@@ -148,37 +148,37 @@ const Modal = ({setOpenModal, formOpen, editOpen, exerciseProp, setUpdate, updat
                 <button type='button' onClick={() => {setOpenModal(false)}}>X</button>
               </div>
                 <div className='modalbody'>
-                  <label> Routine Title:*
+                  <label> Routine Title:
                       <input id = 'routine_name' type='text' onChange={handleChange} value={formState.routine_name}/>
                   </label>
-                  <label> Description:* 
+                  <label> Description: 
                     <input id = 'routine_description' type ='text' onChange={handleChange} value={formState.routine_description}/>
                   </label>
                   <br/>
                   <br/>
                   <br/>
-                  <label> Exercises*:
+                  <label> Exercises:
                     <br/>
                     {formState.exercises.map((exercise, index) => {
                       return(
 
                         <div key={ index }>
-                          <label> Name:* 
+                          <label> Name:
                             <input id='exercise_name' type='text' onChange={((e) => handleChange(e, index))} value={formState.exercises[index].exercise_name}/>
                           </label> 
-                          <label> Description:*
+                          <label> Description:
                             <input id='exercise_description' type='text' onChange={((e) => handleChange(e, index))} value={formState.exercises[index].exercise_description}/>
                           </label> 
-                          <label> Sets:* 
+                          <label> Sets:
                             <input id='sets' type='text' onChange={((e) => handleChange(e, index))} value={formState.exercises[index].sets}/>
                           </label> 
-                          <label> Min Reps:* 
+                          <label> Min Reps: 
                             <input id='reps.min' type='text' onChange={((e) => handleChange(e, index))} value={formState.exercises[index].reps.minmax[0]}/>
                           </label> 
-                          <label> Max Reps:* 
+                          <label> Max Reps: 
                             <input id='reps.max' type='text' onChange={((e) => handleChange(e, index))} value={formState.exercises[index].reps.minmax[1]}/>
                           </label> 
-                          <label> Muscle (Groups)*: 
+                          <label> Muscle (Groups): 
                             <input id='muscle_groups' type='text' onChange={((e) => handleChange(e, index))} value={formState.exercises[index].muscle_groups}/>
                           </label> 
                           <label> Image, Video, or GIF: 
@@ -191,18 +191,15 @@ const Modal = ({setOpenModal, formOpen, editOpen, exerciseProp, setUpdate, updat
                     )
                   }  
                   </label> 
-
-                  <button 
-                    type='button'
-                    onClick={(e) => {addExercise(e)} }
-                    > + 
-                  </button>
-
                 </div>
 
                 <div className='modalfooter'>
-                <button type='submit' value='submit'/>
-                  <p> * = required field</p>        
+                <button 
+                    type='button'
+                    onClick={(e) => {addExercise(e)} }
+                    > Add Exercise
+                  </button>
+                <button type='submit' value='submit'> Create Routine </button>    
                 </div>
 
               </form>
@@ -219,24 +216,24 @@ const Modal = ({setOpenModal, formOpen, editOpen, exerciseProp, setUpdate, updat
                 <button type='button' onClick={() => {setOpenModal(false)}}>X</button>
               </div>
               <div className='modalbody'>
-                  <label> Exercises*:
+                  <label> Exercises:
                     <br/>
-                    <label> Name:* 
+                    <label> Name:
                       <input id='exercise_name' type='text' onChange={handleChange} value={exerciseEditState.exercise_name}/>
                     </label> 
-                    <label> Description:*
+                    <label> Description:
                       <input id='exercise_description' type='text' onChange={handleChange} value={exerciseEditState.exercise_description}/>
                     </label> 
-                    <label> Sets:* 
+                    <label> Sets: 
                       <input id='sets' type='text' onChange={handleChange} value={exerciseEditState.sets}/>
                     </label> 
-                    <label> Min Reps:* 
+                    <label> Min Reps: 
                       <input id='reps.min' type='text' onChange={handleChange} value={exerciseEditState.reps.minmax[0]}/>
                     </label> 
-                    <label> Max Reps:* 
+                    <label> Max Reps:
                       <input id='reps.max' type='text' onChange={handleChange} value={exerciseEditState.reps.minmax[1]}/>
                     </label> 
-                    <label> Muscle (Groups)*: 
+                    <label> Muscle (Groups): 
                       <input id='muscle_groups' type='text' onChange={handleChange} value={exerciseEditState.muscle_groups}/>
                     </label> 
                     <label> Image, Video, or GIF: 
@@ -245,8 +242,7 @@ const Modal = ({setOpenModal, formOpen, editOpen, exerciseProp, setUpdate, updat
                   </label> 
                 </div>
                 <div className='modalfooter'>
-                  <button type='submit' value='submit'> Submit Changes </button>
-                  <p> * = required field</p>        
+                  <button type='submit' value='submit'> Submit Changes </button>        
               </div>
             </form>
           </div>

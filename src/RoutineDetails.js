@@ -117,11 +117,10 @@ function RoutineDetails() {
               <h2 id="exerciseName"> {myExercise.exercise_name}</h2>
               <h4 id="exerciseDetails">{myExercise.exercise_description}</h4>
               <h4 id="exerciseDetails">
-                Reps: {myExercise.reps.minmax}/ Sets:{myExercise.sets}
+                Sets: {myExercise.sets} <br/> Min Reps: {myExercise.reps.minmax[0]} <br/> Max Reps: {myExercise.reps.minmax[1]} 
               </h4>
               <h4 id="exerciseDetails">
-                Targeted Muscle Groups: {myExercise.muscle_groups[0]},
-                {myExercise.muscle_groups[1]}
+                Targeted Muscle Groups: {myExercise.muscle_groups}
               </h4>
               {console.log(myExercise.img_example)}
               <div
