@@ -162,8 +162,8 @@ const Modal = ({setOpenModal, formOpen, editOpen, exerciseProp, setUpdate, updat
                     {formState.exercises.map((exercise, index) => {
                       return(
 
-                        <div key={ index }>
-                          <label> Name:
+                        <div className='div_exercises' key={ index }>
+                          <label> Name:* 
                             <input id='exercise_name' type='text' onChange={((e) => handleChange(e, index))} value={formState.exercises[index].exercise_name}/>
                           </label> 
                           <label> Description:
