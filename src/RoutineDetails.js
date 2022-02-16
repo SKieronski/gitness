@@ -123,9 +123,14 @@ function RoutineDetails() {
                   Sets: {myExercise.sets} <br/> Min Reps: {myExercise.reps.minmax[0]} <br/> Max Reps: {myExercise.reps.minmax[1]} 
                 </h4>
                 <h4 id="exerciseDetails">
-                  Targeted Muscle Groups: {myExercise.muscle_groups}
+                  Targeted Muscle Groups:
+                  {myExercise.muscle_groups.map((muscle)=> {
+                    
+                    return (
+                      <span> {muscle} </span>
+                    )
+                  })}
                 </h4>
-                {console.log(myExercise.img_example)}
                 <div
                   id="gifBox"
                   style={{
