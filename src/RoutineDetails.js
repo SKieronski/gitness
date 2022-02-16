@@ -92,14 +92,8 @@ function RoutineDetails() {
     } else {
 
       return (
-        <div id="pageBox">
-          <Nav />
-          <h1>
-            <span id="yellowFont">{routine.routine_name}</span>
-          </h1>
-          <p id="routineDescription">{routine.routine_description}</p>
-          <div id="routineDetailsBox">
-            {openModal && (
+        <div id='modalBox'>
+          {openModal && (
               <Modal
                 openModal={openModal}
                 setOpenModal={setOpenModal}
@@ -112,67 +106,76 @@ function RoutineDetails() {
                 update={update}
               />
             )}
+            <div id="pageBox">
+            <Nav />
+            <h1>
+              <span id="yellowFont">{routine.routine_name}</span>
+            </h1>
+            <p id="routineDescription">{routine.routine_description}</p>
+            <div id="routineDetailsBox">
+              
 
-            <div id="leftBox">
-              <h2 id="exerciseName"> {myExercise.exercise_name}</h2>
-              <h4 id="exerciseDetails">{myExercise.exercise_description}</h4>
-              <h4 id="exerciseDetails">
-                Sets: {myExercise.sets} <br/> Min Reps: {myExercise.reps.minmax[0]} <br/> Max Reps: {myExercise.reps.minmax[1]} 
-              </h4>
-              <h4 id="exerciseDetails">
-                Targeted Muscle Groups: {myExercise.muscle_groups}
-              </h4>
-              {console.log(myExercise.img_example)}
-              <div
-                id="gifBox"
-                style={{
-                  backgroundImage: `url(${myExercise.img_example})`
-                }}
-              ></div>
-            </div>
-            <div id="details-container">
-              <div id="details">
-                <ol id="exercisesOL">
-                  {routine.exercises.map((exercise) => {
-                    return (
-                      <li id="exercisesLI" key={exercise._id}>
-                        <button
-                          id="choice"
-                          onClick={() => {
-                            changeExercise(exercise._id);
-                          }}
-                        >
-                          {exercise.exercise_name}
-                        </button>
-                        {exercise._id === myExercise._id && (
-                          <>
-                            <button
-                              id="choiceYellow"
-                              onClick={() => {
-                                console.log('Clicked update button')
-                                changeExercise(exercise._id)
-                                setOpenModal(true)
-                                setEditOpen(true)
-                              }}
-                            >
-                              UPDATE
-                            </button>
-                            <button
-                              id="choiceYellow"
-                              onClick={() => {
-                                console.log('clicked delete button')
-                                changeExercise(exercise._id)
-                                handleDelete()
-                              }}
-                            >
-                              DELETE
-                            </button>
-                          </>
-                        )}
-                      </li>
-                    )
-                  })}
-                </ol>
+              <div id="leftBox">
+                <h2 id="exerciseName"> {myExercise.exercise_name}</h2>
+                <h4 id="exerciseDetails">{myExercise.exercise_description}</h4>
+                <h4 id="exerciseDetails">
+                  Sets: {myExercise.sets} <br/> Min Reps: {myExercise.reps.minmax[0]} <br/> Max Reps: {myExercise.reps.minmax[1]} 
+                </h4>
+                <h4 id="exerciseDetails">
+                  Targeted Muscle Groups: {myExercise.muscle_groups}
+                </h4>
+                {console.log(myExercise.img_example)}
+                <div
+                  id="gifBox"
+                  style={{
+                    backgroundImage: `url(${myExercise.img_example})`
+                  }}
+                ></div>
+              </div>
+              <div id="details-container">
+                <div id="details">
+                  <ol id="exercisesOL">
+                    {routine.exercises.map((exercise) => {
+                      return (
+                        <li id="exercisesLI" key={exercise._id}>
+                          <button
+                            id="choice"
+                            onClick={() => {
+                              changeExercise(exercise._id);
+                            }}
+                          >
+                            {exercise.exercise_name}
+                          </button>
+                          {exercise._id === myExercise._id && (
+                            <>
+                              <button
+                                id="choiceYellow"
+                                onClick={() => {
+                                  console.log('Clicked update button')
+                                  changeExercise(exercise._id)
+                                  setOpenModal(true)
+                                  setEditOpen(true)
+                                }}
+                              >
+                                UPDATE
+                              </button>
+                              <button
+                                id="choiceYellow"
+                                onClick={() => {
+                                  console.log('clicked delete button')
+                                  changeExercise(exercise._id)
+                                  handleDelete()
+                                }}
+                              >
+                                DELETE
+                              </button>
+                            </>
+                          )}
+                        </li>
+                      )
+                    })}
+                  </ol>
+                </div>
               </div>
             </div>
           </div>
