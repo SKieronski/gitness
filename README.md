@@ -18,7 +18,7 @@ Check it out at at this url: https://gitness-ga-team-earth.herokuapp.com/
 
 ![Frontend Details Wireframe](/images/GitnessDetails.png)
 
-## MVP User Stores
+## MVP User Stories
 
 * As a user, I want to see a list of all the routines so that I can pick one that sounds interesting to me.
 * As a user, I would like to select a specific routine to find out more about it.

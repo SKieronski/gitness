@@ -18,7 +18,7 @@ function About() {
       <div id="aboutCardBox">
         <div className="topBox2"></div>
         <div className="bottomBox">
-          <h2 id="aboutTitle">DERRICK</h2>
+          <h2 id="aboutTitle">DEREK</h2>
           <p id="aboutText">
             Derek is a record-setting weight lifter after just 6 months in the
             gym. They start each morning breezing through 60 single-finger
