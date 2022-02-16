@@ -28,16 +28,16 @@ function Nav() {
         )}
       </button>
       <ul className={`menuNav ${navbarOpen ? 'showMenu' : ''}`}>
-        <a href="http://localhost:3000/#home" onClick={() => closeMenu()}>
+        <a href="https://gitness-ga-team-earth.herokuapp.com/#home" onClick={() => closeMenu()}>
           Home
         </a>
-        <a href="http://localhost:3000/#routines" onClick={() => closeMenu()}>
+        <a href="https://gitness-ga-team-earth.herokuapp.com/#routines" onClick={() => closeMenu()}>
           Routines
         </a>
-        <a href="http://localhost:3000/#team" onClick={() => closeMenu()}>
+        <a href="https://gitness-ga-team-earth.herokuapp.com/#team" onClick={() => closeMenu()}>
           Dev Team
         </a>
-        <a href="http://localhost:3000/#footer" onClick={() => closeMenu()}>
+        <a href="https://gitness-ga-team-earth.herokuapp.com/#footer" onClick={() => closeMenu()}>
           About Us
         </a>
       </ul>
